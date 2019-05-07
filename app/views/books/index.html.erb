@@ -1,0 +1,15 @@
+<h1>All Books</h1>
+
+<section class="books-index">
+  <% @books.each do |book| %>
+    <div id="test-book-index-<%= book.id %>">
+      <h3>Title: <%= book.title %></h3>
+      <img id="cover-thumbnail" src="<%= book.cover_img %>"/>
+      <p>Pages: <%= book.pages %></p>
+      <p>Published: <%= book.year_pub %></p>
+      <% book.authors.each do |author| %>
+        <p>Author(s): <%= author.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+</section>
