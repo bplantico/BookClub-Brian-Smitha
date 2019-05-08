@@ -16,12 +16,9 @@ RSpec.describe "as a visitor, " do
       @user_1 = User.create!(name: "User One")
       @user_2 = User.create!(name: "User Two")
 
-      @review_1 = @user_1.reviews.create!(title: "Review 1", rating: 1, body: "stuff 1" )
-      @review_2 = @user_2.reviews.create!(title: "Review 2", rating: 2, body: "stuff 2" )
+      @review_1 = @book_1.reviews.create!(title: "Review 1", rating: 1, body: "stuff 1", user: @user_1 )
+      @review_2 = @book_1.reviews.create!(title: "Review 2", rating: 2, body: "stuff 2", user: @user_2 )
 
-      @book_1 << @review_1
-      @book_1 << @review_2
-      
     end
 
     it "shows details about the books" do
@@ -32,8 +29,8 @@ RSpec.describe "as a visitor, " do
         click_link("#{@book_1.title}")
       end
 
-      expect(current_path).to eq("/books/#{@book_1.id}")
-      expect(current_path).to_not eq("/books/#{@book_2.id}")
+      expect(current_path).to eq(book_path(@book_1))
+      expect(current_path).to_not eq(book_path(@book_2))
       expect(page).to have_content(@book_1.title)
       expect(page).to_not have_content(@book_2.title)
       expect(page).to have_content(@book_1.pages)
@@ -46,8 +43,8 @@ RSpec.describe "as a visitor, " do
     end
 
     it "shows a list of reviews for that book" do
-      visit "/books/#{@book_1.id}"
-
+      visit book_path(@book_1)
+save_and_open_page
       expect(page).to have_content(@review_1.title)
       expect(page).to have_content(@review_1.rating)
       expect(page).to have_content(@review_1.body)
