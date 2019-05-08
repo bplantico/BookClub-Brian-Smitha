@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show] do
   end
 
-
+  root to: "welcome#index"
 end
