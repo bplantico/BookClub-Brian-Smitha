@@ -79,7 +79,7 @@ RSpec.describe "As a visitor " do
 
 
       visit books_path
-
+save_and_open_page
       within "#test-book-index-#{@book_1.id}" do
         expect(page).to have_content("Rating: 1.5")
         expect(page).to_not have_content("Rating: 3")

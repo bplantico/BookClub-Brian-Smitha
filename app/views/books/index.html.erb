@@ -14,6 +14,7 @@
       <% book.authors.each do |author| %>
         <p>Author(s): <%= author.name %></p>
       <% end %>
+      <p>Rating: <%= book.average_rating %></p>
     </div>
   <% end %>
 </section>
