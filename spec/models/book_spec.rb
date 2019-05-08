@@ -45,6 +45,13 @@ RSpec.describe Book do
       expect(@book_3.average_rating).to eq(4)
     end
 
+    it "should calculate count of reviews for each book" do
+
+      expect(@book_1.total_reviews).to eq(2)
+      expect(@book_2.total_reviews).to eq(2)
+      expect(@book_3.total_reviews).to eq(1)
+    end
+
   end
 
 end

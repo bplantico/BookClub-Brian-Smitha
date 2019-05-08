@@ -74,23 +74,25 @@ RSpec.describe "As a visitor " do
       end
     end
 
-    it "shows the average rating next to each book title" do
-
-
+    it "shows the average rating and number of reviews for each book title" do
 
       visit books_path
-save_and_open_page
+
       within "#test-book-index-#{@book_1.id}" do
         expect(page).to have_content("Rating: 1.5")
-        expect(page).to_not have_content("Rating: 3")
+        expect(page).to have_content("Reviews: 2")
 
+        expect(page).to_not have_content("Rating: 3")
+        expect(page).to_not have_content("Reviews: 1")
       end
 
       within "#test-book-index-#{@book_2.id}" do
+        expect(page).to have_content("Reviews: 2")
         expect(page).to have_content("Rating: 3")
       end
 
       within "#test-book-index-#{@book_3.id}" do
+        expect(page).to have_content("Reviews: 1")
         expect(page).to have_content("Rating: 4")
       end
 
