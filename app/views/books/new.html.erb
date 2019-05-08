@@ -1,0 +1,18 @@
+<%= form_for @book do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br />
+
+  <%= f.label :pages %>:
+  <%= f.text_field :pages %><br />
+
+  <%= f.label :published %>:
+  <%= f.text_field :year_pub %><br />
+
+  <%= f.label :Image%>:
+  <%= f.text_field :cover_img %><br />
+
+  <%= f.label :authors %>:
+  <%= f.text_field :authors %><br />
+
+  <%= f.submit "Add Book" %>
+<% end %>
