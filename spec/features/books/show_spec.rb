@@ -11,6 +11,17 @@ RSpec.describe "as a visitor, " do
       @author_2 = @book_1.authors.create!(name: "Author 2", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_3 = @book_2.authors.create!(name: "Author 3", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_4 = @book_3.authors.create!(name: "Author 4", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
+
+
+      @user_1 = User.create!(name: "User One")
+      @user_2 = User.create!(name: "User Two")
+
+      @review_1 = @user_1.reviews.create!(title: "Review 1", rating: 1, body: "stuff 1" )
+      @review_2 = @user_2.reviews.create!(title: "Review 2", rating: 2, body: "stuff 2" )
+
+      @book_1 << @review_1
+      @book_1 << @review_2
+      
     end
 
     it "shows details about the books" do
@@ -32,8 +43,18 @@ RSpec.describe "as a visitor, " do
       expect(page).to have_content(@author_1.name)
       expect(page).to have_content(@author_2.name)
       expect(page).to_not have_content(@author_3.name)
+    end
 
+    it "shows a list of reviews for that book" do
+      visit "/books/#{@book_1.id}"
 
+      expect(page).to have_content(@review_1.title)
+      expect(page).to have_content(@review_1.rating)
+      expect(page).to have_content(@review_1.body)
+
+      expect(page).to have_content(@review_2.title)
+      expect(page).to have_content(@review_2.rating)
+      expect(page).to have_content(@review_2.body)
     end
   end
 end
