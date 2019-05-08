@@ -11,6 +11,18 @@ RSpec.describe "As a visitor " do
       @author_2 = @book_1.authors.create!(name: "Author 2", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_3 = @book_2.authors.create!(name: "Author 3", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_4 = @book_3.authors.create!(name: "Author 4", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
+
+      @user_1 = User.create!(name: "User One")
+      @user_2 = User.create!(name: "User Two")
+
+      @review_1 = @book_1.reviews.create!(title: "Review 1", rating: 1, body: "stuff 1", user: @user_1 )
+      @review_2 = @book_1.reviews.create!(title: "Review 2", rating: 2, body: "stuff 2", user: @user_2 )
+
+      @review_3 = @book_2.reviews.create!(title: "Review 1", rating: 3, body: "stuff 3", user: @user_1 )
+      @review_4 = @book_2.reviews.create!(title: "Review 2", rating: 3, body: "stuff 4", user: @user_2 )
+
+      @review_5 = @book_3.reviews.create!(title: "Review 1", rating: 4, body: "stuff 5", user: @user_1 )
+
     end
 
     it "I see all the books and their attributes" do
@@ -60,6 +72,28 @@ RSpec.describe "As a visitor " do
       within "#test-book-index-#{@book_3.id}" do
         expect(page).to have_link("#{@book_3.title}")
       end
+    end
+
+    it "shows the average rating next to each book title" do
+
+
+
+      visit books_path
+
+      within "#test-book-index-#{@book_1.id}" do
+        expect(page).to have_content("Rating: 1.5")
+        expect(page).to_not have_content("Rating: 3")
+
+      end
+
+      within "#test-book-index-#{@book_2.id}" do
+        expect(page).to have_content("Rating: 3")
+      end
+
+      within "#test-book-index-#{@book_3.id}" do
+        expect(page).to have_content("Rating: 4")
+      end
+
     end
   end
 end
