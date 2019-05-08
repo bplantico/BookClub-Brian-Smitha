@@ -22,10 +22,17 @@ RSpec.describe "as a visitor, " do
       end
 
       expect(current_path).to eq("/books/#{@book_1.id}")
+      expect(current_path).to_not eq("/books/#{@book_2.id}")
       expect(page).to have_content(@book_1.title)
+      expect(page).to_not have_content(@book_2.title)
       expect(page).to have_content(@book_1.pages)
       expect(page).to have_content(@book_1.year_pub)
       expect(page).to have_css("img[src='#{@book_1.cover_img}']")
+
+      expect(page).to have_content(@author_1.name)
+      expect(page).to have_content(@author_2.name)
+      expect(page).to_not have_content(@author_3.name)
+
 
     end
   end
