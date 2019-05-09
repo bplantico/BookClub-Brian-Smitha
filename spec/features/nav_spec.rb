@@ -17,7 +17,7 @@ RSpec.describe "As a visitor, " do
       visit books_path
 
       expect(page).to have_link("Home")
-      expect(page).to_not have_link("All Books")
+      expect(page).to have_link("All Books")
 
       click_link "Home"
       expect(current_path).to eq(root_path)
