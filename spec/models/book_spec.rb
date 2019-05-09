@@ -51,7 +51,11 @@ RSpec.describe Book do
       expect(@book_2.total_reviews).to eq(2)
       expect(@book_3.total_reviews).to eq(1)
     end
-
   end
 
+  describe "class methods" do
+    it "should show all book titles" do
+      expect(Book.find_titles).to eq(["Title 1", "Title 2", "Title 3"])
+    end
+  end
 end

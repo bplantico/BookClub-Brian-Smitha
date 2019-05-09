@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190507220922) do
+ActiveRecord::Schema.define(version: 20190509192202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
-    t.string "author_img"
+    t.string "author_img", default: "https://image.shutterstock.com/image-vector/pen-mightier-than-sword-line-260nw-425446240.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20190507220922) do
     t.string "title"
     t.integer "pages"
     t.integer "year_pub"
-    t.string "cover_img"
+    t.string "cover_img", default: "https://cdn5.vectorstock.com/i/thumb-large/67/99/sketch-silhouette-image-front-view-open-book-vector-15086799.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
