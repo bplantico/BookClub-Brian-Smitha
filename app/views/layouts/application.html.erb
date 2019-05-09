@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <nav>
+      <ul class="nav-bar">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "All Books", books_path %></li>
+      </ul>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
