@@ -8,16 +8,23 @@ Goal to complete functionality with threes at least (or fours). Goal to learn. G
 Goal to re-DTR twice. We both share the goal of wanting to make a significant contribution.
 
 Team strengths & collaboration styles (consider discussing your Pairin qualities here):
-We share the microscope pairin quality so should be aware that we both may be hard on ourselves but this can be a strength too since we'll be self aware of our common strength/weaknesses. Initial set up we'd like to do together, and once we have a solid direction can split up the user stories to work on individually, then reconvene.
+We share the microscope Pairin quality so should be aware that we both may be hard on ourselves but this can be a strength too since we'll be self aware of our common strength/weaknesses. Initial set up we'd like to do together, and once we have a solid direction can split up the user stories to work on individually, then reconvene.
 
 How we can use our strengths to overcome obstacles:
-Both willing to accomodate in order to achieve goals. We'd like to encourage trying/exploration over the "right" solution.
+Both willing to accommodate in order to achieve goals. We'd like to encourage trying/exploration over the "right" solution.
 
 Schedule Expectations (When are we available to work together and individually? What constraints do we have?):
 Wednesdays 8:00am Smitha meets her mentor
 Thursday 6:00pm Smitha leaves
-7:00pm hard cut off time for the evening.
-5 mmin Pomodoro break every 45 minutes.
+7:00pm hard cut off time for weekday evening.
+5 min Pomodoro break every 45 minutes.
+
+Saturday: Smitha is available after 2pm.
+Sunday: Smitha is available after 11am.
+
+Weekend work schedule:
+  * Take Saturday off.
+  * Meet at Turing on Sunday 11am and wrap up at 5pm.
 
 Communication Expectations (How and often will we communicate? How do we keep lines of communication open? How will we make decisions as a team?):
 Daily stand-ups following individual coding sessions and at 6:45pm
@@ -31,6 +38,7 @@ Brian - Areas to improve: Testing with capybara/rspec/simplecov, model vs featur
 
 Workload Expectations (What features do we each want to work on?):
 Initial set up will be done together, then we'll have a clearer idea on which stories we'd like to target individually.
+Update at 3pm on 5/9/19 which user stories each person will take on.
 
 Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests/Debugging and Problem-solving Techniques):
 30 minute "Struggle timer"
