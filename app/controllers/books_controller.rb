@@ -14,8 +14,14 @@ class BooksController < ApplicationController
   end
 
   def create
+    # binding.pry
     book = Book.new(book_params)
     book.save
+    (params[:book][:authors]).split(",").map do |author|
+      author = author.titleize
+      book.authors.find_or_create_by!(name: author)
+    end
+
     #before saving, condition for book exits and titlize
     #before saving, condition for author exists and comma-separated stuff
     #conditional for default image, after saving

@@ -23,14 +23,14 @@ RSpec.describe "As a visitor, " do
       click_button "Add Book"
 
       new_book = Book.last
-
+# binding.pry
       expect(current_path).to eq(book_path(new_book))
 
       expect(page).to have_content(new_book.title)
       expect(page).to have_content(new_book.pages)
       expect(page).to have_content(new_book.year_pub)
       expect(page).to have_css("img[src='#{new_book.cover_img}']")
-      # expect(page).to have_content("Author 1")
+      expect(page).to have_content("Author 1")
     end
   end
 end
