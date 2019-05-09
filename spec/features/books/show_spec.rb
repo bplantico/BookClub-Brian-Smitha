@@ -44,7 +44,7 @@ RSpec.describe "as a visitor, " do
 
     it "shows a list of reviews for that book" do
       visit book_path(@book_1)
-save_and_open_page
+
       expect(page).to have_content(@review_1.title)
       expect(page).to have_content(@review_1.rating)
       expect(page).to have_content(@review_1.body)
