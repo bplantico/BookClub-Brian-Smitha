@@ -2,7 +2,13 @@
 
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    if params[:sort] == "avg_rating_asc"
+      @books = Book.avg_rating("ASC")
+    elsif params[:sort] == "avg_rating_desc"
+      @books = Book.avg_rating("DESC")
+    else
+      @books = Book.all
+    end
   end
 
   def show

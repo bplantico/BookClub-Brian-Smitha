@@ -20,4 +20,11 @@ class Book < ApplicationRecord
   def self.find_titles
     self.select(:title).pluck(:title)
   end
+
+  def self.avg_rating(sort_order)
+    self.joins(:reviews)
+        .select("books.*, AVG(reviews.rating) AS avg_rating")
+        .group(:id)
+        .order("avg_rating #{sort_order}")
+  end
 end

@@ -31,6 +31,7 @@ RSpec.describe "As a visitor, " do
 
       @review_6 = @book_4.reviews.create!(title: "Review 6", rating: 4, body: "stuff 5", user: @user_4 )
     end
+
     it "I should see a links for each sorting" do
       visit books_path
 
@@ -44,14 +45,27 @@ RSpec.describe "As a visitor, " do
 
     it "I should see all books sorted by average raiting in ascending order" do
       visit books_path
-      save_and_open_page
+
       click_link "Sort By Average Rating (Ascending)"
 
-      within '.book-index' do
+      within '.books-index' do
         expect(page.all('div')[0]).to have_content("Title 3")
         expect(page.all('div')[1]).to have_content("Title 1")
         expect(page.all('div')[2]).to have_content("Title 2")
         expect(page.all('div')[3]).to have_content("Title 4")
+      end
+    end
+
+    it "I should see all books sorted by average raiting in descending order" do
+      visit books_path
+
+      click_link "Sort By Average Rating (Descending)"
+
+      within '.books-index' do
+        expect(page.all('div')[0]).to have_content("Title 4")
+        expect(page.all('div')[1]).to have_content("Title 2")
+        expect(page.all('div')[2]).to have_content("Title 1")
+        expect(page.all('div')[3]).to have_content("Title 3")
       end
     end
   end
