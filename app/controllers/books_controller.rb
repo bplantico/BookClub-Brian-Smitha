@@ -16,7 +16,7 @@ class BooksController < ApplicationController
   def create
     book = Book.new(book_params)
     title = (params[:book][:title]).strip.downcase.titleize
-    if Book.find_titles.include?(title) || book.pages < 0
+    if Book.find_titles.include?(title) || book.pages <= 0
       redirect_to new_book_path
     else
       (params[:book][:authors]).split(",").map do |author|
