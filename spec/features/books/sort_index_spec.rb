@@ -68,5 +68,57 @@ RSpec.describe "As a visitor, " do
         expect(page.all('div')[3]).to have_content("Title 3")
       end
     end
+
+    it "I should see all books sorted by number of pages in ascending order" do
+      visit books_path
+
+      click_link "Sort By Number of Pages (Ascending)"
+
+      within '.books-index' do
+        expect(page.all('div')[0]).to have_content("Title 1")
+        expect(page.all('div')[1]).to have_content("Title 2")
+        expect(page.all('div')[2]).to have_content("Title 3")
+        expect(page.all('div')[3]).to have_content("Title 4")
+      end
+    end
+
+    it "I should see all books sorted by number of pages in descending order" do
+      visit books_path
+
+      click_link "Sort By Number of Pages (Descending)"
+
+      within '.books-index' do
+        expect(page.all('div')[0]).to have_content("Title 4")
+        expect(page.all('div')[1]).to have_content("Title 3")
+        expect(page.all('div')[2]).to have_content("Title 2")
+        expect(page.all('div')[3]).to have_content("Title 1")
+      end
+    end
+
+    it "I should see all books sorted by number of reviews in ascending order" do
+      visit books_path
+
+      click_link "Sort By Number of Reviews (Ascending)"
+
+      within '.books-index' do
+        expect(page.all('div')[0]).to have_content("Title 3")
+        expect(page.all('div')[1]).to have_content("Title 4")
+        expect(page.all('div')[2]).to have_content("Title 2")
+        expect(page.all('div')[3]).to have_content("Title 1")
+      end
+    end
+
+    it "I should see all books sorted by number of reviews in descending order" do
+      visit books_path
+
+      click_link "Sort By Number of Reviews (Descending)"
+
+      within '.books-index' do
+        expect(page.all('div')[0]).to have_content("Title 1")
+        expect(page.all('div')[1]).to have_content("Title 2")
+        expect(page.all('div')[2]).to have_content("Title 3")
+        expect(page.all('div')[3]).to have_content("Title 4")
+      end
+    end
   end
 end

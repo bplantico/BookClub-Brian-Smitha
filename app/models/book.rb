@@ -27,4 +27,15 @@ class Book < ApplicationRecord
         .group(:id)
         .order("avg_rating #{sort_order}")
   end
+
+  def self.sort_by_pages(sort_order)
+    self.order("pages #{sort_order}")
+  end
+
+  def self.sort_by_reviews(sort_order)
+    self.joins(:reviews)
+        .select("books.*, COUNT(reviews.id) AS reviews_count")
+        .group(:id)
+        .order("reviews_count #{sort_order}, books.title")
+  end
 end

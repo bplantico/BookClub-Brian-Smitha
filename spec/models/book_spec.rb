@@ -57,13 +57,20 @@ RSpec.describe Book do
     it "should show all book titles" do
       expect(Book.find_titles).to eq(["Title 1", "Title 2", "Title 3"])
     end
-
     it "should sort all books by average rating in ascending order" do
       expect(Book.avg_rating("ASC")).to eq([@book_1, @book_2, @book_3])
     end
-
     it "should sort all books by average rating in descending order" do
       expect(Book.avg_rating("DESC")).to eq([@book_3, @book_2, @book_1])
+    end
+    it "should sort all books by number of pages in ascending order" do
+      expect(Book.sort_by_pages("ASC")).to eq([@book_1, @book_2, @book_3])
+    end
+    it "should sort all books by number of pages in descending order" do
+      expect(Book.sort_by_pages("DESC")).to eq([@book_3, @book_2, @book_1])
+    end
+    it "should sort all books by number of reviews in descending order" do
+      expect(Book.sort_by_reviews("DESC")).to eq([@book_1, @book_2, @book_3])
     end
   end
 end

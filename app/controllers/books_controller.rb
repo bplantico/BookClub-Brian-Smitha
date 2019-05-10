@@ -6,6 +6,14 @@ class BooksController < ApplicationController
       @books = Book.avg_rating("ASC")
     elsif params[:sort] == "avg_rating_desc"
       @books = Book.avg_rating("DESC")
+    elsif params[:sort] == "pages_asc"
+      @books = Book.sort_by_pages("ASC")
+    elsif params[:sort] == "pages_desc"
+      @books = Book.sort_by_pages("DESC")
+    elsif params[:sort] == "reviews_asc"
+      @books = Book.sort_by_reviews("ASC")
+    elsif params[:sort] == "reviews_desc"
+      @books = Book.sort_by_reviews("DESC")
     else
       @books = Book.all
     end
