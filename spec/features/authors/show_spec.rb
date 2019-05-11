@@ -37,6 +37,52 @@ RSpec.describe "As a visitor, " do
         expect(page).to have_link(@author_3.name)
       end
     end
+
+    it "I am taken to author's show page when I click their name from book index" do
+      visit books_path
+
+      within "#test-book-index-#{@book_1.id}" do
+        expect(page).to have_link(@author_1.name)
+        expect(page).to have_link(@author_2.name)
+      end
+
+      click_link "#{@author_1.name}"
+      expect(current_path).to eq(author_path(@author_1.id))
+    end
+
+    it "I see a link from book show page, I click the link to go to author's show page" do
+      visit book_path(@book_1.id)
+
+      expect(page).to have_link(@author_1.name)
+      expect(page).to have_link(@author_2.name)
+
+      click_link "#{@author_1.name}"
+      expect(current_path).to eq(author_path(@author_1.id))
+    end
+
+    it "I can see the selected author's information" do
+      visit author_path(@author_2.id)
+
+      expect(current_path).to eq(author_path(@author_2.id))
+
+      expect(page).to have_content(@author_2.name)
+
+      within "#test-author-book-info-#{@book_1.id}" do
+        expect(page).to have_link(@book_1.title)
+        expect(page).to have_content("Number of Pages: #{@book_1.pages}")
+        expect(page).to have_content("Year Published: #{@book_1.year_pub}")
+        expect(page).to have_css("img[src='#{@book_1.cover_img}']")
+
+        expect(page).to_not have_link(@book_3.title)
+      end
+
+      within "#test-author-book-info-#{@book_2.id}" do
+        expect(page).to have_link(@book_2.title)
+        expect(page).to have_content("Number of Pages: #{@book_2.pages}")
+        expect(page).to have_content("Year Published: #{@book_2.year_pub}")
+        expect(page).to have_css("img[src='#{@book_2.cover_img}']")
+      end
+    end
   end
 end
 
