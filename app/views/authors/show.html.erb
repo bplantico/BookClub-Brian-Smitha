@@ -4,7 +4,7 @@
 
 <% @author.books.each do |book| %>
   <section id="test-author-book-info-<%= book.id %>">
-    <p><%= link_to book.title, book_path(book.id) %></p>
+    <p>Title: <%= link_to book.title, book_path(book.id) %></p>
     <p>Number of Pages: <%= book.pages %></p>
     <p>Year Published: <%= book.year_pub %></p>
     <% book.authors.each do |author| %>

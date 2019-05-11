@@ -96,18 +96,10 @@ RSpec.describe "As a visitor, " do
 
       expect(current_path).to eq(author_path(@author_2.id))
 
-      expect(page).to have_content(@author_2.name)
+      expect(page).to have_link(@author_1.name)
 
-      within "#test-author-book-info-#{@book_1.id}" do
-        expect(page).to have_link(@author_1.name)
-        expect(page).to have_link(@author_3.name)
-
-        expect(page).to_not have_link(@book_3.title)
-      end
-
-      within "#test-author-book-info-#{@book_2.id}" do
-        expect(page).to_not have_link(@author_1.name)
-      end
+      click_link "#{@author_1.name}"
+      expect(current_path).to eq(author_path(@author_1.id))
     end
   end
 end
