@@ -10,9 +10,11 @@ RSpec.describe "As a visitor, " do
       @author_1 = Author.create!(name: "Author 1", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_2 = Author.create!(name: "Author 2", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_3 = Author.create!(name: "Author 3", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
+      @author_4 = Author.create!(name: "Author 4", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
 
       BookAuthor.create!(book: @book_1, author: @author_1)
       BookAuthor.create!(book: @book_1, author: @author_2)
+      BookAuthor.create!(book: @book_1, author: @author_3)
 
       BookAuthor.create!(book: @book_2, author: @author_2)
 
@@ -25,8 +27,9 @@ RSpec.describe "As a visitor, " do
       within "#test-book-index-#{@book_1.id}" do
         expect(page).to have_link(@author_1.name)
         expect(page).to have_link(@author_2.name)
+        expect(page).to have_link(@author_3.name)
 
-        expect(page).to_not have_link(@author_3.name)
+        expect(page).to_not have_link(@author_4.name)
       end
 
       within "#test-book-index-#{@book_2.id}" do
@@ -72,6 +75,10 @@ RSpec.describe "As a visitor, " do
         expect(page).to have_content("Number of Pages: #{@book_1.pages}")
         expect(page).to have_content("Year Published: #{@book_1.year_pub}")
         expect(page).to have_css("img[src='#{@book_1.cover_img}']")
+        expect(page).to have_content("Co-Author: #{@author_1.name}")
+        expect(page).to have_link(@author_1.name)
+        expect(page).to have_content("Co-Author: #{@author_3.name}")
+        expect(page).to have_link(@author_3.name)
 
         expect(page).to_not have_link(@book_3.title)
       end
@@ -81,16 +88,10 @@ RSpec.describe "As a visitor, " do
         expect(page).to have_content("Number of Pages: #{@book_2.pages}")
         expect(page).to have_content("Year Published: #{@book_2.year_pub}")
         expect(page).to have_css("img[src='#{@book_2.cover_img}']")
+
+        expect(page).to_not have_content("Co-Author: #{@author_1.name}")
+        expect(page).to_not have_link(@author_1.name)
       end
     end
   end
 end
-
-# As a Visitor,
-# When I visit an author's show page
-# I see all books by that author
-# Each book should show:
-# - the book title
-# - the number of pages in the book
-# - the year the book was published
-# - a small image of the book cover
