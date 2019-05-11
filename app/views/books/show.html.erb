@@ -14,3 +14,7 @@
   <li><%= review.body %></li>
 </ul>
 <% end %>
+
+<div class="delete-book">
+  <%= link_to "Delete Book", book_path(@book), method: :delete %>
+</div>
