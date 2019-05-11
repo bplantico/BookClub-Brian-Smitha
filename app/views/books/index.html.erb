@@ -19,3 +19,14 @@
 <section id="add-new-book">
   <p><%= link_to "Add New Book", new_book_path %></p>
 </section>
+
+<section class="index-sorting">
+  <ul id="sorting-links">
+    <li><%= link_to "Sort By Average Rating (Ascending)", books_path(sort: "avg_rating_asc") %></li>
+    <li><%= link_to "Sort By Average Rating (Descending)", books_path(sort: "avg_rating_desc") %></li>
+    <li><%= link_to "Sort By Number of Pages (Ascending)", books_path(sort: "pages_asc") %></li>
+    <li><%= link_to "Sort By Number of Pages (Descending)", books_path(sort: "pages_desc")%></li>
+    <li><%= link_to "Sort By Number of Reviews (Ascending)", books_path(sort: "reviews_asc") %></li>
+    <li><%= link_to "Sort By Number of Reviews (Descending)", books_path(sort: "reviews_desc") %></li>
+  </ul>
+</section>

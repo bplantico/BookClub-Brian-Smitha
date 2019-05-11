@@ -22,7 +22,6 @@ RSpec.describe "As a visitor " do
       @review_4 = @book_2.reviews.create!(title: "Review 2", rating: 3, body: "stuff 4", user: @user_2 )
 
       @review_5 = @book_3.reviews.create!(title: "Review 1", rating: 4, body: "stuff 5", user: @user_1 )
-
     end
 
     it "I see all the books and their attributes" do
