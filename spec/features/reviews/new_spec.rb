@@ -16,5 +16,29 @@ RSpec.describe "As a visitor, " do
 
       expect(page).to have_link("Add A Review")
     end
+
+    it "I am taken to a form to add new book after I click on Add A Review" do
+      visit book_path(@book_1)
+
+      click_link "Add A Review"
+      expect(current_path).to eq(new_review_path)
+
+      fill_in :review_title, with: "reView oNe  "
+      fill_in :review_rating, with: 5
+      fill_in :review_body, with: "This is by far the absolute best Book I have ever read."
+
+      click_button "Create Review"
+
+      new_review = Review.last
+
+      expect(current_path).to eq(book_path)
+      expect(page).to have_content(new_book.title)
+      expect(page).to have_content("Title One")
+
+      expect(page).to have_content(new_review.title)
+      expect(page).to have_content(new_review.rating)
+      expect(page).to have_content(new_review.body)
+
+    end
   end
 end
