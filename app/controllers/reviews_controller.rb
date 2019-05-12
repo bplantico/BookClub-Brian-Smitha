@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
 
     # find the user
     user_name = review_params[:name].strip.downcase.titleize
-    user = User.find_by(name: user_name)
+    user = User.find_or_create_by(name: user_name)
     review.user_id = user.id
 
     # find the book
