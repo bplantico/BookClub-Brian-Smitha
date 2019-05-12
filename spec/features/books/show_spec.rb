@@ -68,6 +68,7 @@ RSpec.describe "as a visitor, " do
       visit book_path(@book_1)
       expect(page).to have_link("Delete Book")
       expect(Review.count).to eq(3)
+      expect(Book.count).to eq(3)
 
       click_link "Delete Book"
 
@@ -77,6 +78,7 @@ RSpec.describe "as a visitor, " do
 
       expect(page).to have_content(@author_2.name)
       expect(Review.count).to eq(1)
+      expect(Book.count).to eq(2)
     end
   end
 end
