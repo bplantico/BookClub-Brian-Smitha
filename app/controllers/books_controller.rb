@@ -40,7 +40,7 @@ class BooksController < ApplicationController
       redirect_to new_book_path
     else
       (params[:book][:authors]).split(",").map do |author|
-          author = author.downcase.strip.titleize
+          author = author.strip.downcase.titleize
           book_author = Author.find_or_create_by!(name: author)
           book.authors << book_author
       end

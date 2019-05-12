@@ -1,7 +1,10 @@
+# /spec/features/books/new_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe "As a visitor, " do
   describe "when I visit the books index page, " do
+
     it "I see a link to add a new book" do
       visit books_path
 

@@ -3,10 +3,12 @@ Rails.application.routes.draw do
 
   root to: "welcome#index"
 
-  resources :reviews, only: [:show, :new, :create]
-
-  resources :books, only: [:index, :show, :new, :create, :destroy]
+  resources :books, only: [:index, :new, :create, :destroy]
 
   resources :authors, only: [:show]
+
+  resources :books, only: [:show] do
+    resources :reviews, only: [:new, :create]
+  end
 
 end
