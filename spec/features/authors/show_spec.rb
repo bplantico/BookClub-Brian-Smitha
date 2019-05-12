@@ -109,39 +109,40 @@ RSpec.describe "As a visitor, " do
       click_link "#{@author_1.name}"
       expect(current_path).to eq(author_path(@author_1.id))
     end
-  end
 
-  it "I see a link to delete the author" do
-     visit author_path(@author_4.id)
-     expect(current_path).to eq(author_path(@author_4.id))
+    it "I see a link to delete the author" do
+      visit author_path(@author_4.id)
+      expect(current_path).to eq(author_path(@author_4.id))
 
-     expect(page).to have_link("Delete Author")
-  end
+      expect(page).to have_link("Delete Author")
+    end
 
-  xit "I click on delete author, I no longer see the author and their book" do
-    visit author_path(@author_4.id)
-    expect(current_path).to eq(author_path(@author_4.id))
+    it "I click on delete author, I no longer see the author and their books" do
+      visit author_path(@author_4.id)
+      expect(current_path).to eq(author_path(@author_4.id))
 
-    expect(page).to have_link("Delete Author")
-    click_link "Delete Author"
+      expect(page).to have_link("Delete Author")
+      click_link "Delete Author"
+      expect(current_path).to eq(books_path)
+      expect(page).to_not have_content(@author_4.name)
 
-    expect(current_path).to eq(books_path)
-    expect(page).to_not have_content(@book_4.title)
-    expect(page).to_not have_content(@author_4.name)
-  end
+      expect(page).to_not have_content(@book_4.title)
+      expect(page).to_not have_content(@book_5.title)
+    end
 
-  xit "I click on delete author, I can see the co-author and their own book" do
-    visit author_path(@book_5.id)
-    expect(current_path).to eq(author_path(@author_5.id))
+    it "I click on delete author, I can see the co-author and their own book" do
+      visit author_path(@book_5.id)
+      expect(current_path).to eq(author_path(@author_5.id))
 
-    expect(page).to have_link("Delete Author")
-    click_link "Delete Author"
+      expect(page).to have_link("Delete Author")
+      click_link "Delete Author"
 
-    expect(current_path).to eq(books_path)
-    expect(page).to_not have_content(@book_5.title)
-    expect(page).to_not have_content(@author_5.name)
+      expect(current_path).to eq(books_path)
+      expect(page).to_not have_content(@book_5.title)
+      expect(page).to_not have_content(@author_5.name)
 
-    expect(page).to have_content(@book_4.title)
-    expect(page).to have_content(@author_4.name)
+      expect(page).to have_content(@book_4.title)
+      expect(page).to have_content(@author_4.name)
+    end
   end
 end
