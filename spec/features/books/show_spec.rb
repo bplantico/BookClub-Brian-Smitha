@@ -9,7 +9,10 @@ RSpec.describe "as a visitor, " do
 
       @author_1 = @book_1.authors.create!(name: "Author 1", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_2 = @book_1.authors.create!(name: "Author 2", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
+
+      @author_2 = @book_2.authors.create!(name: "Author 2", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_3 = @book_2.authors.create!(name: "Author 3", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
+
       @author_4 = @book_3.authors.create!(name: "Author 4", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
 
 
@@ -19,6 +22,7 @@ RSpec.describe "as a visitor, " do
       @review_1 = @book_1.reviews.create!(title: "Review 1", rating: 1, body: "stuff 1", user: @user_1 )
       @review_2 = @book_1.reviews.create!(title: "Review 2", rating: 2, body: "stuff 2", user: @user_2 )
 
+      @review_3 = @book_2.reviews.create!(title: "Review 3", rating: 1, body: "stuff 3", user: @user_1 )
     end
 
     it "shows details about the books" do
@@ -52,6 +56,27 @@ RSpec.describe "as a visitor, " do
       expect(page).to have_content(@review_2.title)
       expect(page).to have_content(@review_2.rating)
       expect(page).to have_content(@review_2.body)
+    end
+
+    it "shows a link to delete the book" do
+      visit book_path(@book_1)
+
+      expect(page).to have_link("Delete Book")
+    end
+
+    it "when I click on the Delete Book link, I am taken to Books Index page where I no longer see the deleted book." do
+      visit book_path(@book_1)
+      expect(page).to have_link("Delete Book")
+      expect(Review.count).to eq(3)
+
+      click_link "Delete Book"
+
+      expect(current_path).to eq(books_path)
+      expect(page).to_not have_content(@book_1.title)
+      expect(page).to_not have_content(@author_1.name)
+
+      expect(page).to have_content(@author_2.name)
+      expect(Review.count).to eq(1)
     end
   end
 end
