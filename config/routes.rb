@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   root to: "welcome#index"
 
   resources :books, only: [:index, :show, :new, :create, :destroy]
+  
+  
+  resources :authors, only: [:show]
 end
