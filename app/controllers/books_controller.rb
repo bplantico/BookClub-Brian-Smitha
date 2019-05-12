@@ -23,6 +23,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def destroy
+    @book = Book.destroy(params[:id])
+
+    redirect_to books_path
+  end
+
   def new
     @book = Book.new
   end
