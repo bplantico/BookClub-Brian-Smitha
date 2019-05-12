@@ -1,6 +1,6 @@
 <h1><%= @book.title %></h1>
 <% @book.authors.each do |author| %>
-  <p>Author(s): <%= author.name %></p>
+  <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
 <% end %>
 <p><%= @book.pages %></p>
 <p><%= @book.year_pub %></p>
@@ -15,6 +15,12 @@
 </ul>
 <% end %>
 
+<<<<<<< HEAD
 <section id="add-new-review">
   <p><%= link_to "Add A Review", new_review_path %></p>
 </section>
+=======
+<div class="delete-book">
+  <%= link_to "Delete Book", book_path(@book), method: :delete, data: {confirm: "Do you really want to deplete your library?"} %>
+</div>
+>>>>>>> 7d74aaa8dfc19f902802fd72278440b232429f25
