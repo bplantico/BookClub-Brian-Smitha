@@ -131,7 +131,8 @@ RSpec.describe "As a visitor, " do
     end
 
     it "I click on delete author, I can see the co-author and their own book" do
-      visit author_path(@book_5.id)
+      # binding.pry
+      visit author_path(@author_5.id)
       expect(current_path).to eq(author_path(@author_5.id))
 
       expect(page).to have_link("Delete Author")
@@ -143,6 +144,12 @@ RSpec.describe "As a visitor, " do
 
       expect(page).to have_content(@book_4.title)
       expect(page).to have_content(@author_4.name)
+
+      expect(page).to have_content(@book_1.title)
+      expect(page).to have_content(@author_1.name)
+
+      expect(page).to have_content(@book_2.title)
+      expect(page).to have_content(@author_2.name)
     end
   end
 end

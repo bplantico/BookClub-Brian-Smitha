@@ -7,8 +7,7 @@ class AuthorsController < ApplicationController
     author = Author.find(params[:id])
     author.books.each do |book|
         book.authors.each do |book_author|
-        # binding.pry
-          if book_author.books.count <= 1
+          if book_author.books.count == 1
             book_author.destroy
           end
         end
