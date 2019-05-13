@@ -9,7 +9,7 @@
         <p>Pages: <%= book.pages %></p>
         <p>Published: <%= book.year_pub %></p>
         <% book.authors.each do |author| %>
-          <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
+            <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
         <% end %>
         <p>Rating: <%= book.average_rating %></p>
         <p>Reviews: <%= book.total_reviews %></p>
