@@ -82,10 +82,28 @@ RSpec.describe "as a visitor, " do
     end
 
     it "I see a link to delete a review" do
-      visit user_path(user)
-      expect(current_path).to eq(author_path(@author_4.id))
+      user_1 = User.create!(name: "User One")
 
-      expect(page).to have_link("Delete Author")
+      review_1 = @book_1.reviews.create!(title: "Review of Book 1", rating: 1, body: "stuff about book 1", user: user_1 )
+      review_2 = @book_2.reviews.create!(title: "Review of Book 2", rating: 2, body: "stuff about book 2", user: user_1 )
+      review_3 = @book_3.reviews.create!(title: "Review of Book 3", rating: 3, body: "stuff about book 3", user: user_1 )
+
+      visit user_path(user_1)
+
+      expect(current_path).to eq(user_path(user_1))
+
+      within "#test-review-index-#{review_1.id}" do
+        expect(page).to have_link("Delete Review")
+      end
+
+      within "#test-review-index-#{review_2.id}" do
+        expect(page).to have_link("Delete Review")
+      end
+
+      within "#test-review-index-#{review_3.id}" do
+        expect(page).to have_link("Delete Review")
+      end
+      
     end
 
   end
