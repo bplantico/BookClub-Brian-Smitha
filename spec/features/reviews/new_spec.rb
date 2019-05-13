@@ -45,7 +45,6 @@ RSpec.describe "As a visitor, " do
       brian = User.create!(name: "Brian Plantico")
 
       review_1 = Review.create!(title: "Review 1", rating: 4, body: "This is the first review on this book", book_id: book_1.id, user_id: brian.id)
-# require "pry"; binding.pry
 
       visit book_path(book_1)
 
