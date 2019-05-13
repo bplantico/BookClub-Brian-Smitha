@@ -139,7 +139,6 @@ RSpec.describe "As a visitor, " do
     end
 
     it "I click on delete author, I can see the co-author and their own book" do
-      # binding.pry
       visit author_path(@author_5.id)
       expect(current_path).to eq(author_path(@author_5.id))
 
