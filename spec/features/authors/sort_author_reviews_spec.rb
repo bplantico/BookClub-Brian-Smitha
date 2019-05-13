@@ -43,23 +43,23 @@ RSpec.describe "When I visit the author's show page" do
     expect(current_path).to eq(author_path(@author_1.id))
 
     within "#test-author-book-info-#{@book_1.id}" do
-      expect(page).to have_content("Review Title: Review 3")
+      expect(page).to have_content("Top Review: Review 3")
       expect(page).to have_content("By: User Three")
       expect(page).to have_content("Rating: 3")
       expect(page).to have_content("Description: stuff 3")
 
-      expect(page).to_not have_content("Review Title: Review 1")
+      expect(page).to_not have_content("Top Review: Review 1")
     end
 
     within "#test-author-book-info-#{@book_2.id}" do
-      expect(page).to have_content("Review Title: Review 5")
+      expect(page).to have_content("Top Review: Review 5")
       expect(page).to have_content("By: User Two")
       expect(page).to have_content("Rating: 2")
       expect(page).to have_content("Description: stuff 5")
     end
 
     within "#test-author-book-info-#{@book_3.id}" do
-      expect(page).to have_content("Review Title: Review 6")
+      expect(page).to have_content("Top Review: Review 6")
       expect(page).to have_content("By: User Two")
       expect(page).to have_content("Rating: 5")
       expect(page).to have_content("Description: stuff 6")
