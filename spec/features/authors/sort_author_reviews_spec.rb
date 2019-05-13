@@ -46,7 +46,7 @@ RSpec.describe "When I visit the author's show page" do
       expect(page).to have_content("Review Title: Review 3")
       expect(page).to have_content("By: User Three")
       expect(page).to have_content("Rating: 3")
-      expect(page).to have_content("Description: Stuff 3")
+      expect(page).to have_content("Description: stuff 3")
 
       expect(page).to_not have_content("Review Title: Review 1")
     end

@@ -13,12 +13,14 @@
       <% end %>
     <% end %>
     <img id="author-book-image" src="<%= book.cover_img %>" />
+    <% if book.reviews.any? %>
     <div class="author-book-review">
-      <p>Review Title: <%= @review.title %></p>
-      <p>By: <%= @user.name %></p>
-      <p>Rating: <%= @review.rating %></p>
-      <p>Description: <%= @review.body %></p>
+      <p>Top Review: <%= book.find_top_review.title %></p>
+      <p>By: <%= book.find_top_review.user.name %></p>
+      <p>Rating: <%= book.find_top_review.rating %></p>
+      <p>Description: <%= book.find_top_review.body %></p>
     </div>
+    <% end %>
   </section>
 <% end %>
 
