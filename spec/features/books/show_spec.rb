@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "as a visitor, " do
   describe "when I visit a book show page" do
     before :each do
+
       @book_1 = Book.create!(title: "Title 1", pages: 100, year_pub: 1901, cover_img: "https://media.wired.com/photos/5be4cd03db23f3775e466767/master/pass/books-521812297.jpg")
       @book_2 = Book.create!(title: "Title 2", pages: 200, year_pub: 1902, cover_img: "https://media.wired.com/photos/5be4cd03db23f3775e466767/master/pass/books-521812297.jpg")
       @book_3 = Book.create!(title: "Title 3", pages: 300, year_pub: 1903, cover_img: "https://media.wired.com/photos/5be4cd03db23f3775e466767/master/pass/books-521812297.jpg")
@@ -23,6 +24,7 @@ RSpec.describe "as a visitor, " do
       @review_2 = @book_1.reviews.create!(title: "Review 2", rating: 2, body: "stuff 2", user: @user_2 )
 
       @review_3 = @book_2.reviews.create!(title: "Review 3", rating: 1, body: "stuff 3", user: @user_1 )
+      
     end
 
     it "shows details about the books" do
