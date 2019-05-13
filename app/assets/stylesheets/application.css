@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ .books-index{
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-gap: 20px;
+   padding: 20px;
+ }
+
+ .books-index-container{
+   box-shadow: -6px 8px 6px -6px black;
+   padding: 25px;
+   background-color: #DEDBDB;
+   border-radius: 8px;
+   margin: 20px auto;
+ }
+
+ #cover-thumbnail{
+   width: 200px;
+   height: 250px;
+   padding: 20px;
+   object-fit: cover;
+ }

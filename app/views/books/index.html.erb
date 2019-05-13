@@ -3,15 +3,17 @@
 <section class="books-index">
   <% @books.each do |book| %>
     <div id="test-book-index-<%= book.id %>">
-      <h3>Title: <%= link_to book.title, book_path(book.id) %></h3>
-      <img id="cover-thumbnail" src="<%= book.cover_img %>"/>
-      <p>Pages: <%= book.pages %></p>
-      <p>Published: <%= book.year_pub %></p>
-      <% book.authors.each do |author| %>
-        <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
-      <% end %>
-      <p>Rating: <%= book.average_rating %></p>
-      <p>Reviews: <%= book.total_reviews %></p>
+      <div class="books-index-container">
+        <h3>Title: <%= link_to book.title, book_path(book.id) %></h3>
+        <img id="cover-thumbnail" src="<%= book.cover_img %>"/>
+        <p>Pages: <%= book.pages %></p>
+        <p>Published: <%= book.year_pub %></p>
+        <% book.authors.each do |author| %>
+          <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
+        <% end %>
+        <p>Rating: <%= book.average_rating %></p>
+        <p>Reviews: <%= book.total_reviews %></p>
+      </div>
     </div>
   <% end %>
 </section>
