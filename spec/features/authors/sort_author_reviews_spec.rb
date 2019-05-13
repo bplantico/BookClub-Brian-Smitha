@@ -44,7 +44,7 @@ RSpec.describe "When I visit the author's show page" do
 
     within "#test-author-book-info-#{@book_1.id}" do
       expect(page).to have_content("Review Title: Review 3")
-      expect(page).to have_content("User Name: User Three")
+      expect(page).to have_content("By: User Three")
       expect(page).to have_content("Rating: 3")
       expect(page).to have_content("Description: Stuff 3")
 
@@ -53,17 +53,20 @@ RSpec.describe "When I visit the author's show page" do
 
     within "#test-author-book-info-#{@book_2.id}" do
       expect(page).to have_content("Review Title: Review 5")
-      expect(page).to have_content("User Name: User Two")
+      expect(page).to have_content("By: User Two")
       expect(page).to have_content("Rating: 2")
       expect(page).to have_content("Description: stuff 5")
     end
 
-    within "#test-author-book-info-#{@book_2.id}" do
+    within "#test-author-book-info-#{@book_3.id}" do
       expect(page).to have_content("Review Title: Review 6")
-      expect(page).to have_content("User Name: User Two")
+      expect(page).to have_content("By: User Two")
       expect(page).to have_content("Rating: 5")
       expect(page).to have_content("Description: stuff 6")
     end
+
+    within "#test-author-book-info-#{@book_4.id}" do
+      expect(page).to have_content("Title 4")
+    end
   end
-# (review should contain the title, score, and user name)
 end
