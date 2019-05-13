@@ -2,14 +2,13 @@
 <% @book.authors.each do |author| %>
   <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
 <% end %>
-<p><%= @book.pages %></p>
-<p><%= @book.year_pub %></p>
+<p>Pages: <%= @book.pages %></p>
+<p>Year Published: <%= @book.year_pub %></p>
 <img src="<%= @book.cover_img %>"/>
 <h4>Reviews</h4>
 
 <p><% @book.reviews.each do |review| %></p>
 <ul>
-
   <li><%= review.title %></li>
   <li><%= review.user.name %></li>
   <li>Rating: <%= review.rating %></li>
