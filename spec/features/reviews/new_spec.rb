@@ -23,7 +23,7 @@ RSpec.describe "As a visitor, " do
       expect(current_path).to eq(new_book_review_path(book_1))
 
       fill_in :review_title, with: "reView oNe  "
-      fill_in :review_name, with: "Brian Plantico"
+      fill_in :review_user, with: "Brian Plantico"
       fill_in :review_rating, with: 5
       fill_in :review_body, with: "This is by far the absolute best Book I have ever read."
 
@@ -45,7 +45,6 @@ RSpec.describe "As a visitor, " do
       brian = User.create!(name: "Brian Plantico")
 
       review_1 = Review.create!(title: "Review 1", rating: 4, body: "This is the first review on this book", book_id: book_1.id, user_id: brian.id)
-# require "pry"; binding.pry
 
       visit book_path(book_1)
 
@@ -54,7 +53,7 @@ RSpec.describe "As a visitor, " do
       expect(current_path).to eq(new_book_review_path(book_1))
 
       fill_in :review_title, with: "reView TWo "
-      fill_in :review_name, with: "Brian Plantico"
+      fill_in :review_user, with: "Brian Plantico"
       fill_in :review_rating, with: 5
       fill_in :review_body, with: "This would be my second review of this book."
 
