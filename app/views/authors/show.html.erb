@@ -13,9 +13,17 @@
       <% end %>
     <% end %>
     <img id="author-book-image" src="<%= book.cover_img %>" />
+    <% if book.reviews.any? %>
+    <div class="author-book-review">
+      <p>Top Review: <%= book.find_top_review.title %></p>
+      <p>By: <%= book.find_top_review.user.name %></p>
+      <p>Rating: <%= book.find_top_review.rating %></p>
+      <p>Description: <%= book.find_top_review.body %></p>
+    </div>
+    <% end %>
   </section>
 <% end %>
 
-<section class="delete-author">
+<section class="author-delete">
   <%= link_to "Delete Author", author_path(@author), method: :delete, data: {confirm: "Are you sure you want to delete this author and all their books?"} %>
 </section>

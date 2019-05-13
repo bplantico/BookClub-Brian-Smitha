@@ -17,6 +17,13 @@ class Book < ApplicationRecord
     reviews.count
   end
 
+  def find_top_review
+    self.reviews
+        .select("reviews.*")
+        .order("reviews.rating DESC")
+        .first
+  end
+
   def self.find_titles
     self.select(:title).pluck(:title)
   end

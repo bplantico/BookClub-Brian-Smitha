@@ -39,17 +39,17 @@ RSpec.describe Book do
 
   describe "instance methods" do
     it "should calculate average rating for each book" do
-
       expect(@book_1.average_rating).to eq(1.5)
       expect(@book_2.average_rating).to eq(3)
       expect(@book_3.average_rating).to eq(4)
     end
-
     it "should calculate count of reviews for each book" do
-
       expect(@book_1.total_reviews).to eq(2)
       expect(@book_2.total_reviews).to eq(2)
       expect(@book_3.total_reviews).to eq(1)
+    end
+    it "can find top reviews for each book for a specific author" do
+      expect(@book_1.find_top_review).to eq(@review_2)
     end
   end
 
