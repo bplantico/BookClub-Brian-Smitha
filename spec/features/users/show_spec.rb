@@ -80,6 +80,14 @@ RSpec.describe "as a visitor, " do
       expect(page).to have_content(@book_3.title)
 
     end
+
+    it "I see a link to delete a review" do
+      visit user_path(user)
+      expect(current_path).to eq(author_path(@author_4.id))
+
+      expect(page).to have_link("Delete Author")
+    end
+
   end
 
 end
