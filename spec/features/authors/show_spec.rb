@@ -6,11 +6,14 @@ RSpec.describe "As a visitor, " do
       @book_1 = Book.create!(title: "Title 1", pages: 100, year_pub: 1901, cover_img: "https://media.wired.com/photos/5be4cd03db23f3775e466767/master/pass/books-521812297.jpg")
       @book_2 = Book.create!(title: "Title 2", pages: 200, year_pub: 1902, cover_img: "https://media.wired.com/photos/5be4cd03db23f3775e466767/master/pass/books-521812297.jpg")
       @book_3 = Book.create!(title: "Title 3", pages: 300, year_pub: 1903)
+      @book_4 = Book.create!(title: "Title 4", pages: 400, year_pub: 1904)
+      @book_5 = Book.create!(title: "Title 5", pages: 500, year_pub: 1905)
 
       @author_1 = Author.create!(name: "Author 1", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_2 = Author.create!(name: "Author 2", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_3 = Author.create!(name: "Author 3", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
       @author_4 = Author.create!(name: "Author 4", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
+      @author_5 = Author.create!(name: "Author 5", author_img: "https://banner2.kisspng.com/20180516/zce/kisspng-shadow-person-dungeons-dragons-silhouette-art-5afc1fa5cf7d87.5508397315264726138499.jpg")
 
       BookAuthor.create!(book: @book_1, author: @author_1)
       BookAuthor.create!(book: @book_1, author: @author_2)
@@ -19,9 +22,22 @@ RSpec.describe "As a visitor, " do
       BookAuthor.create!(book: @book_2, author: @author_2)
 
       BookAuthor.create!(book: @book_3, author: @author_3)
+
+      BookAuthor.create!(book: @book_4, author: @author_4)
+
+      BookAuthor.create!(book: @book_5, author: @author_4)
+      BookAuthor.create!(book: @book_5, author: @author_5)
+
+      @user_1 = User.create!(name: "User One")
+      @user_2 = User.create!(name: "User Two")
+
+      @review_1 = @book_5.reviews.create!(title: "Review 1", rating: 1, body: "stuff 1", user: @user_1 )
+      @review_2 = @book_5.reviews.create!(title: "Review 2", rating: 2, body: "stuff 2", user: @user_2 )
+
+      @review_3 = @book_4.reviews.create!(title: "Review 3", rating: 1, body: "stuff 3", user: @user_1 )
     end
 
-    it "I click on author link from book index page" do
+    it "I see authors names are links from book index page" do
       visit books_path
 
       within "#test-book-index-#{@book_1.id}" do
@@ -100,6 +116,49 @@ RSpec.describe "As a visitor, " do
 
       click_link "#{@author_1.name}"
       expect(current_path).to eq(author_path(@author_1.id))
+    end
+
+    it "I see a link to delete the author" do
+      visit author_path(@author_4.id)
+      expect(current_path).to eq(author_path(@author_4.id))
+
+      expect(page).to have_link("Delete Author")
+    end
+
+    it "I click on delete author, I no longer see the author and their books" do
+      visit author_path(@author_4.id)
+      expect(current_path).to eq(author_path(@author_4.id))
+
+      expect(page).to have_link("Delete Author")
+      click_link "Delete Author"
+      expect(current_path).to eq(books_path)
+      expect(page).to_not have_content(@author_4.name)
+
+      expect(page).to_not have_content(@book_4.title)
+      expect(page).to_not have_content(@book_5.title)
+    end
+
+    it "I click on delete author, I can see the co-author and their own book" do
+      visit author_path(@author_5.id)
+      expect(current_path).to eq(author_path(@author_5.id))
+
+      expect(page).to have_link("Delete Author")
+      click_link "Delete Author"
+
+      expect(current_path).to eq(books_path)
+      expect(page).to_not have_content(@book_5.title)
+      expect(page).to_not have_content(@author_5.name)
+
+      expect(page).to have_content(@book_4.title)
+      expect(page).to have_content(@author_4.name)
+
+      expect(page).to have_content(@book_1.title)
+      expect(page).to have_content(@author_1.name)
+
+      expect(page).to have_content(@book_2.title)
+      expect(page).to have_content(@author_2.name)
+
+      expect(Review.count).to eq(1)
     end
   end
 end
