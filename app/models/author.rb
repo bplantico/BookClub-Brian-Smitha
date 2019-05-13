@@ -4,4 +4,8 @@ class Author < ApplicationRecord
 
   validates_presence_of :name, :author_img
 
+  def find_top_review
+    binding.pry
+    
+  end
 end

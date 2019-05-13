@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Author do
-
   describe "relationships" do
     it { should have_many :book_authors }
     it { should have_many(:books).through(:book_authors) }
@@ -50,7 +49,9 @@ RSpec.describe Author do
   end
 
   describe "instance methods" do
-    expect(@author_1.find_top_review).to eq[@review_3, @review_2, @review_6]
+    it "can find top reviews for each book for a specific author" do
+      expect(@author_1.find_top_review).to eq([@review_3, @review_2, @review_6])
+    end
   end
 
 end
