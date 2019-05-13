@@ -27,6 +27,14 @@ RSpec.describe "As a visitor, " do
 
       BookAuthor.create!(book: @book_5, author: @author_4)
       BookAuthor.create!(book: @book_5, author: @author_5)
+
+      @user_1 = User.create!(name: "User One")
+      @user_2 = User.create!(name: "User Two")
+
+      @review_1 = @book_5.reviews.create!(title: "Review 1", rating: 1, body: "stuff 1", user: @user_1 )
+      @review_2 = @book_5.reviews.create!(title: "Review 2", rating: 2, body: "stuff 2", user: @user_2 )
+
+      @review_3 = @book_4.reviews.create!(title: "Review 3", rating: 1, body: "stuff 3", user: @user_1 )
     end
 
     it "I see authors names are links from book index page" do
@@ -150,6 +158,8 @@ RSpec.describe "As a visitor, " do
 
       expect(page).to have_content(@book_2.title)
       expect(page).to have_content(@author_2.name)
+
+      expect(Review.count).to eq(1)
     end
   end
 end
