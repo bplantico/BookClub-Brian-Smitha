@@ -1,8 +1,8 @@
 class AuthorsController < ApplicationController
   def show
     @author = Author.find(params[:id])
-    @review = Author.find_top_review
-    @user = Author.find_user_with_top_review
+    # @review = Author.find_top_review
+    # @user = Author.find_user_with_top_review
   end
 
   def destroy

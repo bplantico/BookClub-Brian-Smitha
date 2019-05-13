@@ -6,6 +6,6 @@ class Author < ApplicationRecord
 
   def find_top_review
     binding.pry
-    
+
   end
 end

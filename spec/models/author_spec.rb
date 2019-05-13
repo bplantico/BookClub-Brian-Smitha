@@ -53,5 +53,4 @@ RSpec.describe Author do
       expect(@author_1.find_top_review).to eq([@review_3, @review_2, @review_6])
     end
   end
-
 end
