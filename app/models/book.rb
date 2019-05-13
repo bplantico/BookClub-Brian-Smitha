@@ -7,7 +7,7 @@ class Book < ApplicationRecord
   validates_presence_of :title, :pages, :year_pub, :cover_img
   validates :pages, numericality: { greater_than: 0 }
 
-  # self.joins(:reviews).group(:id).average('reviews.rating') ## Keeping this for sorting later
+  validates :title, uniqueness: true
 
   def average_rating
     reviews.average(:rating)
