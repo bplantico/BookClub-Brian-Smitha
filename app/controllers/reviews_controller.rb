@@ -13,10 +13,10 @@ class ReviewsController < ApplicationController
     title = review_params[:title].strip.downcase.titleize
     review.title = title
 
-    # find the user
-    user_name = review_params[:name].strip.downcase.titleize
-    user = User.find_or_create_by(name: user_name)
-    review.user_id = user.id
+    # find the user object
+    user = user_params[:user].strip.downcase.titleize
+    user = User.find_or_create_by(name: user_params[:user])
+    review.user = user
 
     # find the book
     book = Book.find(params[:book_id])
@@ -31,10 +31,20 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @review = Review.destroy(params[:user_id])
+    redirect_to user_path(params[:id])
+  end
+
+
   private
 
   def review_params
-    params.require(:review).permit(:title, :name, :rating, :body)
+    params.require(:review).permit(:title, :rating, :body)
+  end
+
+  def user_params
+    params.require(:review).permit(:user)
   end
 
 end

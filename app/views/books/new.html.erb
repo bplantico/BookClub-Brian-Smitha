@@ -1,4 +1,4 @@
-# app/views/books/new.html.erb
+<!-- app/views/books/new.html.erb -->
 
 <%= form_for @book do |f| %>
   <%= f.label :title %>:
@@ -14,7 +14,7 @@
   <%= f.text_field :cover_img %><br />
 
   <%= f.label :authors %>:
-  <%= f.text_field :authors %><br />
+  <%= f.text_field :authors, value: " ", required: true %><br />
 
   <%= f.submit "Add Book" %>
 <% end %>
