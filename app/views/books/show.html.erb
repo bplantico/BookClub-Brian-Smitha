@@ -21,7 +21,7 @@
       <% @book.worst_three_reviews.each do |review| %>
         <p><%= review.title %></p>
         <p>Rating: <%= review.rating %></p>
-        <p>Reviewer: <%= review.reviewer_name(review[:user_id]) %> </p>
+        <p>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </p>
         <p>------------------------------</p>
       <% end %>
     <% end %>
