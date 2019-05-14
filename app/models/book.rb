@@ -11,7 +11,7 @@ class Book < ApplicationRecord
 
   def average_rating
     if reviews.count > 0
-      reviews.average(:rating).to_f
+      reviews.average(:rating).to_f.round(2)
     else
       "No ratings have been added for this book yet."
     end
