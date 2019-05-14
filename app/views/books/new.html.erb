@@ -5,15 +5,15 @@
   <%= form_for @book do |f| %>
     <div class="forms-field">
       <%= f.label :title %>:
-      <%= f.text_field :title %><br />
+      <%= f.text_field :title, required: true %><br />
     </div>
     <div class="forms-field">
       <%= f.label :pages %>:
-      <%= f.text_field :pages %><br />
+      <%= f.number_field :pages, required: true %><br />
     </div>
     <div class="forms-field">
       <%= f.label :published %>:
-      <%= f.text_field :year_pub %><br />
+      <%= f.number_field :year_pub, min: 0, max: 2019, required: true %><br />
     </div>
     <div class="forms-field">
       <%= f.label "Book Image"%>:
@@ -29,4 +29,3 @@
   <% end %>
 
 </main>
-

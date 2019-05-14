@@ -3,19 +3,19 @@
   <%= form_for [@book, @review] do |f| %>
     <div class="forms-field">
       <%= f.label :title %>:
-      <%= f.text_field :title %><br />
+      <%= f.text_field :title, required: true %><br />
     </div>
     <div class="forms-field">
       <%= f.label "User Name" %>:
-      <%= f.text_field :user %><br />
+      <%= f.text_field :user, required: true %><br />
     </div>
     <div class="forms-field">
       <%= f.label :rating %>:
-      <%= f.text_field :rating %><br />
+      <%= f.number_field :rating, min: 1, max: 5, required: true %><br />
     </div>
     <div class="forms-field">
       <%= f.label :body %>:
-      <%= f.text_field :body %><br />
+      <%= f.text_field :body, required: true %><br />
     </div>
     <div class="forms-button">
       <%= f.submit "Create Review" %>
