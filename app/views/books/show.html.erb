@@ -37,17 +37,18 @@
 <img src="<%= @book.cover_img %>"/>
 <h4>Reviews</h4>
 
-<p><% @book.reviews.each do |review| %></p>
-<ul>
-  <li><%= review.title %></li>
+<<div class="all-reviews">
+  <p><% @book.reviews.each do |review| %></p>
+  <ul>
+    <li><%= review.title %></li>
 
-  <li>Reviewer: <%= link_to review.user.name, user_path(review.user.id) %></li>
+    <li>Reviewer: <%= link_to review.user.name, user_path(review.user.id) %></li>
 
-  <li>Rating: <%= review.rating %></li>
-  <li><%= review.body %></li>
-</ul>
-<% end %>
-
+    <li>Rating: <%= review.rating %></li>
+    <li><%= review.body %></li>
+  </ul>
+  <% end %>
+</div>
 
 <section id="add-new-review">
   <p><%= link_to "Add A Review", new_book_review_path(@book) %></p>
