@@ -1,11 +1,41 @@
 <section id="add-new">
   <%= link_to "Add A Review", new_book_review_path(@book) %>
 </section>
+
 <div class="delete">
   <%= link_to "Delete Book", book_path(@book), method: :delete, data: {confirm: "Do you really want to deplete your library?"} %>
 </div>
 
 <h1><%= @book.title %></h1>
+
+<div id="book-show-page-stats">
+  <p>Average Rating: <%= @book.average_rating %></p>
+
+  <div id="best-three-reviews">
+    <% if @book.reviews.count > 0 %>
+      <p>Best Reviews:</p>
+      <% @book.best_three_reviews.each do |review| %>
+        <p><%= review.title %></p>
+        <p>Rating: <%= review.rating %></p>
+        <p>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </p>
+        <p>------------------------------</p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="worst-three-reviews">
+    <% if @book.reviews.count > 0 %>
+      <p>Worst Reviews:</p>
+      <% @book.worst_three_reviews.each do |review| %>
+        <p><%= review.title %></p>
+        <p>Rating: <%= review.rating %></p>
+        <p>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </p>
+        <p>------------------------------</p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <main class="show-page">
   <div class="book-card">
     <% @book.authors.each do |author| %>

@@ -10,7 +10,11 @@ class Book < ApplicationRecord
   validates :title, uniqueness: true
 
   def average_rating
-    reviews.average(:rating)
+    if reviews.count > 0
+      reviews.average(:rating).to_f.round(2)
+    else
+      "No ratings have been added for this book yet."
+    end
   end
 
   def total_reviews
@@ -61,4 +65,15 @@ class Book < ApplicationRecord
         .order("avg_rating ASC, books.title")
         .limit(3)
   end
+
+  def best_three_reviews
+      reviews.order('rating DESC, title DESC')
+      .limit(3)
+  end
+
+  def worst_three_reviews
+    reviews.order('rating, title DESC')
+    .limit(3)
+  end
+
 end

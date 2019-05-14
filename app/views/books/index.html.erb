@@ -6,7 +6,7 @@
   <% @books.each do |book| %>
     <div class="book-card" id="test-book-index-<%= book.id %>">
       <h3>Title: <%= link_to book.title, book_path(book.id) %></h3>
-      <img id="cover-thumbnail" src="<%= book.cover_img %>"/>
+      <img class="cover-thumbnail" src="<%= book.cover_img %>"/>
       <p>Pages: <%= book.pages %></p>
       <p>Published: <%= book.year_pub %></p>
       <% book.authors.each do |author| %>
@@ -48,12 +48,12 @@
     </ul>
     <% end %>
   </div>
-
+  
   <div class="stats-card" id="test-best-users">
     <h4>Users With Most Reviews:</h4>
     <% @top_three_users.each do |user| %>
     <ul class="stats-info">
-      <li>User Name: <%= user.name %></li>
+      <li>User Name: <%= link_to user.name, user_path(user) %></li>
       <li>Number of Reviews: <%= user.reviews.count %></li>
     </ul>
     <% end %>
