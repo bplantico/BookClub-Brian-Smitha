@@ -1,6 +1,6 @@
 <h2>Author: <%= @author.name %></h2>
 
-<img src="<%= @author.author_img %>" />
+<img id="cover-thumbnail" src="<%= @author.author_img %>" />
 
 <h4>My Books</h4>
 
@@ -14,7 +14,7 @@
         <p>Co-Author: <%= link_to author.name, author_path(author) %></p>
       <% end %>
     <% end %>
-    <img id="author-book-image" src="<%= book.cover_img %>" />
+    <img id="cover-thumbnail" src="<%= book.cover_img %>" />
     <% if book.reviews.any? %>
     <div class="author-book-review">
       <p>Top Review: <%= book.find_top_review.title %></p>

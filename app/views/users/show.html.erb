@@ -10,8 +10,8 @@
         <p><%= review.body %></p>
         <p>Book: <%= review.book.title %></p>
 
-        <div class="thumbnail">
-          <img src="<%= review.book.cover_img %>"/>
+        <div>
+          <img id="cover-thumbnail" src="<%= review.book.cover_img %>"/>
         </div>
 
         <p>Review created: <%= review.created_at %></p>

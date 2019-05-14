@@ -20,32 +20,32 @@
    box-sizing: border-box;
  }
 
- .books-index-container{
+ .books-index{
    display: grid;
    grid-template-columns: repeat(3, 1fr);
    grid-gap: 20px;
    padding: 20px;
  }
 
- .books-index{
+ .book-card{
    box-shadow: -6px 8px 6px -6px black;
    padding: 25px;
    background-color: #DEDBDB;
    border-radius: 8px;
    margin: 20px auto;
+   width: 400px;
  }
 
  #cover-thumbnail{
-   width: 200px;
    height: 250px;
    padding: 20px;
-   object-fit: cover;
+   align-content: center;
+   object-fit: contain;
  }
 
  body {
   margin: 0;
   padding: 0;
-  background: #F4F5EB;
 }
 
 .nav-bar ul {
@@ -64,21 +64,38 @@
   padding: 20px;
 }
 
-#welcome-image{
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+#welcome-title {
+  text-align: center;
+  padding: 50px;
 }
 
-#welcome-image img{
-  position: absolute;
-  top: 0; 
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
+#welcome-message {
+  padding: 50px;
+}
+
+#welcome-message h4 {
+  padding: 5px;
+}
+#welcome-message li {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.welcome-image img{
+  position: relative;
+  right: -250px;
+  top: -70px;
+}
+
+#add-new-book p{
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+  line-height: 40px;
+  height: 40px;
+  display: inline;
+  padding: 20px;
+}
+
+#sort-links{
+  
 }
