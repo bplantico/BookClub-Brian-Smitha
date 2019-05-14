@@ -1,5 +1,7 @@
 <h2>Author: <%= @author.name %></h2>
 
+<img src="<%= @author.author_img %>" />
+
 <h4>My Books</h4>
 
 <% @author.books.each do |book| %>
@@ -16,7 +18,7 @@
     <% if book.reviews.any? %>
     <div class="author-book-review">
       <p>Top Review: <%= book.find_top_review.title %></p>
-      <p>By: <%= book.find_top_review.user.name %></p>
+      <p>By: <%= link_to book.find_top_review.user.name, user_path(book.find_top_review.user) %></p>
       <p>Rating: <%= book.find_top_review.rating %></p>
       <p>Description: <%= book.find_top_review.body %></p>
     </div>

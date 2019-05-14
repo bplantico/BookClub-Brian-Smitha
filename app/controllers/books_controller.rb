@@ -17,6 +17,9 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
+    @top_three_books = Book.top_three_books
+    @bottom_three_books = Book.bottom_three_books
+    @top_three_users = User.top_three_users
   end
 
   def show
