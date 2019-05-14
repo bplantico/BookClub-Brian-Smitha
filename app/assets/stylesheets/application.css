@@ -13,3 +13,147 @@
  *= require_tree .
  *= require_self
  */
+
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ .books-index, .stats{
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-gap: 20px;
+   padding: 20px;
+ }
+
+ .book-card, .stats-card, .review-card {
+   box-shadow: -6px 8px 6px -6px black;
+   padding: 25px;
+   background-color: #DEDBDB;
+   border-radius: 8px;
+   margin: 20px auto;
+   width: 400px;
+ }
+
+ .review-card {
+   width: 600px;
+   margin: 20px auto;
+   text-align: left;
+   list-style-type: none;
+ }
+
+ .stats-info {
+   list-style-type: none;
+   padding: 10px;
+ }
+ #cover-thumbnail {
+   height: 250px;
+   padding: 20px;
+   align-content: center;
+   object-fit: contain;
+ }
+
+.show-page-image {
+  text-align: center;
+}
+
+ .large-image {
+   height: 400px;
+   padding: 20px;
+   align-content: center;
+   object-fit: contain;
+ }
+
+ body {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar ul {
+  list-style: none;
+  background-color: #444;
+  text-align: center;
+  padding: 0px;
+  margin: 0;
+}
+.nav-bar li {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+  line-height: 40px;
+  height: 40px;
+  display: inline;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  padding: 50px;
+}
+
+#welcome-message {
+  padding: 50px;
+}
+
+#welcome-message h4 {
+  padding: 5px;
+  text-align: left;
+}
+
+h4 {
+  text-align: center;
+  padding: 10px;
+}
+
+#welcome-message li {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.welcome-image img{
+  position: relative;
+  right: -250px;
+  top: -70px;
+}
+
+#add-new, .delete{
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+  line-height: 40px;
+  height: 40px;
+  display: inline;
+  padding: 20px;
+}
+
+#sort-links{
+  box-shadow: -6px 8px 6px -6px black;
+  padding: 25px;
+  background-color: #DEDBDB;
+  border-radius: 8px;
+  margin: 20px;
+  width: 400px;
+  list-style-type: none;
+}
+
+.forms{
+  box-shadow: -6px 8px 6px -6px black;
+  padding: 25px;
+  background-color: #DEDBDB;
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 600px;
+  height: 500px;
+}
+
+.forms-field, .forms-button{
+  margin: 10px auto;
+}
+
+.new_book, .new_review{
+  display: grid;
+}
+
+.forms-button input {
+  padding: 10px;
+  border-radius: 8px;
+}

@@ -1,20 +1,32 @@
 <!-- app/views/books/new.html.erb -->
+<main class="forms">
+  <h1>Add New Book</h1>
 
-<%= form_for @book do |f| %>
-  <%= f.label :title %>:
-  <%= f.text_field :title %><br />
+  <%= form_for @book do |f| %>
+    <div class="forms-field">
+      <%= f.label :title %>:
+      <%= f.text_field :title %><br />
+    </div>
+    <div class="forms-field">
+      <%= f.label :pages %>:
+      <%= f.text_field :pages %><br />
+    </div>
+    <div class="forms-field">
+      <%= f.label :published %>:
+      <%= f.text_field :year_pub %><br />
+    </div>
+    <div class="forms-field">
+      <%= f.label "Book Image"%>:
+      <%= f.text_field :cover_img %><br />
+    </div>
+    <div class="forms-field">
+      <%= f.label :authors %>:
+      <%= f.text_field :authors, value: " ", required: true %><br />
+    </div>
+    <div class="forms-button">
+      <%= f.submit "Add Book" %>
+    </div>
+  <% end %>
 
-  <%= f.label :pages %>:
-  <%= f.text_field :pages %><br />
+</main>
 
-  <%= f.label :published %>:
-  <%= f.text_field :year_pub %><br />
-
-  <%= f.label "Book Image"%>:
-  <%= f.text_field :cover_img %><br />
-
-  <%= f.label :authors %>:
-  <%= f.text_field :authors, value: " ", required: true %><br />
-
-  <%= f.submit "Add Book" %>
-<% end %>

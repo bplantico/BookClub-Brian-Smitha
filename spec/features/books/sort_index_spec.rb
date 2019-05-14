@@ -44,20 +44,20 @@ RSpec.describe "As a visitor, " do
       expect(page).to have_link("Sort By Number of Reviews (Descending)")
     end
 
-    it "I should see all books sorted by average raiting in ascending order" do
+    it "I should see all books sorted by average rating in ascending order" do
       visit books_path
 
       click_link "Sort By Average Rating (Ascending)"
 
       within '.books-index' do
-        expect(page.all('div')[0]).to have_content("Title 3")
+        expect(page.all('div')[0]).to have_content(@book_3.title)
         expect(page.all('div')[1]).to have_content("Title 1")
         expect(page.all('div')[2]).to have_content("Title 2")
         expect(page.all('div')[3]).to have_content("Title 4")
       end
     end
 
-    it "I should see all books sorted by average raiting in descending order" do
+    it "I should see all books sorted by average rating in descending order" do
       visit books_path
 
       click_link "Sort By Average Rating (Descending)"

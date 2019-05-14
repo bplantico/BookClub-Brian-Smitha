@@ -1,22 +1,21 @@
 <!-- app/views/users/show.html.erb -->
 
-<h3>Reviews by <%= @user.name %></h3>
+<h1>Reviews by <%= @user.name %></h1>
 
-  <div>
-    <% @user.reviews.each do |review| %>
-      <div id="test-review-index-<%= review.id %>">
-        <p><%= review.title %></p>
-        <p>Rating <%= review.rating %></p>
-        <p><%= review.body %></p>
-        <p>Book: <%= review.book.title %></p>
+<main class="show-page">
+  <% @user.reviews.each do |review| %>
+    <div class="review-card" id="test-review-index-<%= review.id %>">
+      <p>Review Title: <%= review.title %></p>
+      <p>Rating: <%= review.rating %></p>
+      <p><%= review.body %></p>
+      <p>Book: <%= link_to review.book.title, book_path(review.book) %></p>
 
-        <div class="thumbnail">
-          <img src="<%= review.book.cover_img %>"/>
-        </div>
-
-        <p>Review created: <%= review.created_at %></p>
-        <p><%= link_to "Delete Review", user_review_path(review), method: :delete, data: {confirm: "Do you really want to delete this review?"} %></p>
+      <div>
+        <img id="cover-thumbnail" src="<%= review.book.cover_img %>"/>
       </div>
 
-    <% end %>
-  </div>
+      <p>Review created: <%= review.created_at %></p>
+      <p class="delete"><%= link_to "Delete Review", user_review_path(review), method: :delete, data: {confirm: "Do you really want to delete this review?"} %></p>
+    </div>
+  <% end %>
+</main>
