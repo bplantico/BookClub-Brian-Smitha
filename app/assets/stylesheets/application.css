@@ -20,14 +20,14 @@
    box-sizing: border-box;
  }
 
- .books-index{
+ .books-index, .stats{
    display: grid;
    grid-template-columns: repeat(3, 1fr);
    grid-gap: 20px;
    padding: 20px;
  }
 
- .book-card{
+ .book-card, .stats-card{
    box-shadow: -6px 8px 6px -6px black;
    padding: 25px;
    background-color: #DEDBDB;
@@ -35,9 +35,20 @@
    margin: 20px auto;
    width: 400px;
  }
+ .stats-info {
+   list-style-type: none;
+   padding: 10px;
+ }
 
- #cover-thumbnail{
+ #cover-thumbnail {
    height: 250px;
+   padding: 20px;
+   align-content: center;
+   object-fit: contain;
+ }
+
+ .large-image {
+   height: 400px;
    padding: 20px;
    align-content: center;
    object-fit: contain;
@@ -64,7 +75,7 @@
   padding: 20px;
 }
 
-#welcome-title {
+h1 {
   text-align: center;
   padding: 50px;
 }
@@ -87,7 +98,7 @@
   top: -70px;
 }
 
-#add-new-book p{
+#add-new p{
   font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
   line-height: 40px;
@@ -97,5 +108,34 @@
 }
 
 #sort-links{
-  
+  box-shadow: -6px 8px 6px -6px black;
+  padding: 25px;
+  background-color: #DEDBDB;
+  border-radius: 8px;
+  margin: 20px;
+  width: 400px;
+  list-style-type: none;
+}
+
+.forms{
+  box-shadow: -6px 8px 6px -6px black;
+  padding: 25px;
+  background-color: #DEDBDB;
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 600px;
+  height: 500px;
+}
+
+.forms-field, .forms-button{
+  margin: 10px auto;
+}
+
+.new_book, .new_review{
+  display: grid;
+}
+
+.forms-button input {
+  padding: 10px;
+  border-radius: 8px;
 }
