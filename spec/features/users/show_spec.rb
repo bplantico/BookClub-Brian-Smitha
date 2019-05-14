@@ -38,7 +38,7 @@ RSpec.describe "as a visitor, " do
 
       visit book_path(@book_1)
 
-      within ".all-reviews" do
+      within "#all-reviews" do
         click_link "User One"
       end
 

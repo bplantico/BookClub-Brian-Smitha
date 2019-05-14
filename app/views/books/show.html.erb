@@ -50,7 +50,7 @@
 
   <h4>Reviews</h4>
     <% @book.reviews.each do |review| %>
-      <div class="review-card">
+      <div class="review-card" id="all-reviews">
         <li><%= review.title %></li>
         <li>Reviewer: <%= link_to review.user.name, user_path(review.user.id) %></li>
         <li>Rating: <%= review.rating %></li>
