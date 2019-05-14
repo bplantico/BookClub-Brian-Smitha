@@ -80,6 +80,62 @@ RSpec.describe "as a visitor, " do
       expect(page).to have_content(@book_3.title)
 
     end
+
+    it "I see a link to delete a review" do
+      user_1 = User.create!(name: "User One")
+
+      review_1 = @book_1.reviews.create!(title: "Review of Book 1", rating: 1, body: "stuff about book 1", user: user_1 )
+      review_2 = @book_2.reviews.create!(title: "Review of Book 2", rating: 2, body: "stuff about book 2", user: user_1 )
+      review_3 = @book_3.reviews.create!(title: "Review of Book 3", rating: 3, body: "stuff about book 3", user: user_1 )
+
+      visit user_path(user_1)
+
+      expect(current_path).to eq(user_path(user_1))
+
+      within "#test-review-index-#{review_1.id}" do
+        expect(page).to have_link("Delete Review")
+      end
+
+      within "#test-review-index-#{review_2.id}" do
+        expect(page).to have_link("Delete Review")
+      end
+
+      within "#test-review-index-#{review_3.id}" do
+        expect(page).to have_link("Delete Review")
+      end
+
+    end
+
+    it "I click on delete review, I no longer see the review on user show page" do
+      user_1 = User.create!(name: "User One")
+
+      review_1 = @book_1.reviews.create!(title: "Review of Book One", rating: 1, body: "stuff about book 1", user: user_1 )
+      review_2 = @book_2.reviews.create!(title: "Review of Book 2", rating: 2, body: "stuff about book 2", user: user_1 )
+      review_3 = @book_3.reviews.create!(title: "Review of Book 3", rating: 3, body: "stuff about book 3", user: user_1 )
+
+      visit user_path(user_1.id)
+
+      within "#test-review-index-#{review_1.id}" do
+        click_link("Delete Review")
+      end
+
+      expect(current_path).to eq(user_path(user_1))
+
+      expect(page).to_not have_content(review_1.title)
+      expect(page).to_not have_content(review_1.body)
+
+      expect(page).to have_content(review_2.title)
+      expect(page).to have_content(review_2.body)
+      expect(page).to have_content(review_2.rating)
+      expect(page).to have_content(review_2.created_at)
+
+      expect(page).to have_content(review_3.title)
+      expect(page).to have_content(review_3.body)
+      expect(page).to have_content(review_3.rating)
+      expect(page).to have_content(review_3.created_at)
+
+    end
+
   end
 
 end
