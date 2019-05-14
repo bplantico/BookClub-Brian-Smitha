@@ -57,6 +57,7 @@
 .show-page-image {
   text-align: center;
 }
+
  .large-image {
    height: 400px;
    padding: 20px;
@@ -90,17 +91,20 @@ h1 {
   padding: 50px;
 }
 
-h4 {
-  text-align: center;
-  padding: 10px;
-}
 #welcome-message {
   padding: 50px;
 }
 
 #welcome-message h4 {
   padding: 5px;
+  text-align: left;
 }
+
+h4 {
+  text-align: center;
+  padding: 10px;
+}
+
 #welcome-message li {
   list-style-type: none;
   padding: 5px;
