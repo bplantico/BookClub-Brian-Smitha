@@ -2,13 +2,13 @@
 
 <%= form_for @book do |f| %>
   <%= f.label :title %>:
-  <%= f.text_field :title %><br />
+  <%= f.text_field :title, required: true %><br />
 
   <%= f.label :pages %>:
-  <%= f.text_field :pages %><br />
+  <%= f.number_field :pages, min: 1, required: true %><br />
 
   <%= f.label :published %>:
-  <%= f.text_field :year_pub %><br />
+  <%= f.number_field :year_pub, required: true %><br />
 
   <%= f.label "Book Image"%>:
   <%= f.text_field :cover_img %><br />
