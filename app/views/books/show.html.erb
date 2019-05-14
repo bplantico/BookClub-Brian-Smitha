@@ -40,7 +40,7 @@
         <h4>Worst Reviews:</h4>
         <% @book.worst_three_reviews.each do |review| %>
           <ul class="stats-info">
-            <li><%= review.title %></li>
+            <li>Review Title: <%= review.title %></li>
             <li>Rating: <%= review.rating %></li>
             <li>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </li>
           </ul>
