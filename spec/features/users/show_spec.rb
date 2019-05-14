@@ -38,7 +38,9 @@ RSpec.describe "as a visitor, " do
 
       visit book_path(@book_1)
 
-      click_link "User One"
+      within ".all-reviews" do
+        click_link "User One"
+      end
 
       expect(current_path).to eq(user_path(user_1))
 
