@@ -1,22 +1,22 @@
 <h1>All Books</h1>
 
-<section class="books-index">
-  <% @books.each do |book| %>
-    <div id="test-book-index-<%= book.id %>">
-      <div class="books-index-container">
+<div class="books-index-container">
+  <div class="books-index">
+    <% @books.each do |book| %>
+      <div id="test-book-index-<%= book.id %>">
         <h3>Title: <%= link_to book.title, book_path(book.id) %></h3>
         <img id="cover-thumbnail" src="<%= book.cover_img %>"/>
         <p>Pages: <%= book.pages %></p>
         <p>Published: <%= book.year_pub %></p>
         <% book.authors.each do |author| %>
-            <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
+        <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
         <% end %>
         <p>Rating: <%= book.average_rating %></p>
         <p>Reviews: <%= book.total_reviews %></p>
       </div>
-    </div>
-  <% end %>
-</section>
+    <% end %>
+  </div>
+</div>
 
 <section id="add-new-book">
   <p><%= link_to "Add New Book", new_book_path %></p>
@@ -32,6 +32,8 @@
     <li><%= link_to "Sort By Number of Reviews (Descending)", books_path(sort: "reviews_desc") %></li>
   </ul>
 </section>
+
+
 
 
 <div id="test-best-books">
