@@ -4,7 +4,7 @@
 <% end %>
 <p>Pages: <%= @book.pages %></p>
 <p>Year Published: <%= @book.year_pub %></p>
-<img src="<%= @book.cover_img %>"/>
+<img id="cover-image" src="<%= @book.cover_img %>"/>
 <h4>Reviews</h4>
 
 <p><% @book.reviews.each do |review| %></p>

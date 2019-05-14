@@ -8,9 +8,9 @@
         <p><%= review.title %></p>
         <p>Rating <%= review.rating %></p>
         <p><%= review.body %></p>
-        <p>Book: <%= review.book.title %></p>
+        <p>Book: <%= link_to review.book.title, book_path(review.book.id) %></p>
 
-        <div class="thumbnail">
+        <div class="cover-thumbnail">
           <img src="<%= review.book.cover_img %>"/>
         </div>
 

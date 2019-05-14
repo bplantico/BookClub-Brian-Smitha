@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   validates :title, uniqueness: true
 
   def average_rating
-    reviews.average(:rating)
+    reviews.average(:rating).to_f
   end
 
   def total_reviews

@@ -14,7 +14,7 @@
         <p>Co-Author: <%= link_to author.name, author_path(author) %></p>
       <% end %>
     <% end %>
-    <img id="author-book-image" src="<%= book.cover_img %>" />
+    <img class="cover-thumbnail" src="<%= book.cover_img %>" />
     <% if book.reviews.any? %>
     <div class="author-book-review">
       <p>Top Review: <%= book.find_top_review.title %></p>
