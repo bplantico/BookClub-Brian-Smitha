@@ -27,7 +27,7 @@
    padding: 20px;
  }
 
- .book-card, .stats-card{
+ .book-card, .stats-card, .review-card {
    box-shadow: -6px 8px 6px -6px black;
    padding: 25px;
    background-color: #DEDBDB;
@@ -35,11 +35,18 @@
    margin: 20px auto;
    width: 400px;
  }
+
+ .review-card {
+   width: 600px;
+   margin: 20px auto;
+   text-align: left;
+   list-style-type: none;
+ }
+
  .stats-info {
    list-style-type: none;
    padding: 10px;
  }
-
  #cover-thumbnail {
    height: 250px;
    padding: 20px;
@@ -47,6 +54,9 @@
    object-fit: contain;
  }
 
+.show-page-image {
+  text-align: center;
+}
  .large-image {
    height: 400px;
    padding: 20px;
@@ -80,6 +90,10 @@ h1 {
   padding: 50px;
 }
 
+h4 {
+  text-align: center;
+  padding: 10px;
+}
 #welcome-message {
   padding: 50px;
 }
@@ -98,7 +112,7 @@ h1 {
   top: -70px;
 }
 
-#add-new p{
+#add-new, .delete{
   font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
   line-height: 40px;
