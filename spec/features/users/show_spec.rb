@@ -147,8 +147,9 @@ RSpec.describe "as a visitor, " do
 
       visit user_path(user_1.id)
 
-      expect(page).to have_link("Sort Ascending")
-      expect(page).to have_link("Sort Descending")
+      expect(page).to have_link("Sort Reviews (newest first")
+      expect(page).to have_link("Sort Reviews (oldest first")
+
     end
 
   end
