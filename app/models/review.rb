@@ -13,4 +13,8 @@ class Review < ApplicationRecord
     self.select(:user_id).pluck(:user_id)
   end
 
+  def reviewer_name(id)
+    User.find(id).name
+  end
+
 end

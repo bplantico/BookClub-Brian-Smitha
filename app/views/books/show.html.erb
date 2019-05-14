@@ -1,4 +1,34 @@
 <h1><%= @book.title %></h1>
+
+<div id="book-show-page-stats">
+  <p>Average Rating: <%= @book.average_rating %></p>
+
+  <div id="best-three-reviews">
+    <% if @book.reviews.count > 0 %>
+      <p>Best Reviews:</p>
+      <% @book.best_three_reviews.each do |review| %>
+        <p><%= review.title %></p>
+        <p>Rating: <%= review.rating %></p>
+        <p>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </p>
+        <p>------------------------------</p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="worst-three-reviews">
+    <% if @book.reviews.count > 0 %>
+      <p>Worst Reviews:</p>
+      <% @book.worst_three_reviews.each do |review| %>
+        <p><%= review.title %></p>
+        <p>Rating: <%= review.rating %></p>
+        <p>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </p>
+        <p>------------------------------</p>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
+
 <% @book.authors.each do |author| %>
   <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
 <% end %>
