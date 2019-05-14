@@ -100,7 +100,7 @@ h1 {
   text-align: left;
 }
 
-h4 {
+h4, h3 {
   text-align: center;
   padding: 10px;
 }

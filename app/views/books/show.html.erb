@@ -8,34 +8,6 @@
 
 <h1><%= @book.title %></h1>
 
-<div id="book-show-page-stats">
-  <p>Average Rating: <%= @book.average_rating %></p>
-
-  <div id="best-three-reviews">
-    <% if @book.reviews.count > 0 %>
-      <p>Best Reviews:</p>
-      <% @book.best_three_reviews.each do |review| %>
-        <p><%= review.title %></p>
-        <p>Rating: <%= review.rating %></p>
-        <p>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </p>
-        <p>------------------------------</p>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div id="worst-three-reviews">
-    <% if @book.reviews.count > 0 %>
-      <p>Worst Reviews:</p>
-      <% @book.worst_three_reviews.each do |review| %>
-        <p><%= review.title %></p>
-        <p>Rating: <%= review.rating %></p>
-        <p>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </p>
-        <p>------------------------------</p>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
 <main class="show-page">
   <div class="book-card">
     <% @book.authors.each do |author| %>
@@ -43,15 +15,44 @@
     <% end %>
     <p>Pages: <%= @book.pages %></p>
     <p>Year Published: <%= @book.year_pub %></p>
+    <p>Average Rating: <%= @book.average_rating %></p>
   </div>
   <div class="show-page-image">
     <img class="large-image" src="<%= @book.cover_img %>"/>
   </div>
 
-  <h4>Reviews</h4>
+  <div class="stats" id="book-show-page-stats">
+    <div class="stats-card" id="best-three-reviews">
+      <% if @book.reviews.count > 0 %>
+        <h4>Best Reviews:</h4>
+        <% @book.best_three_reviews.each do |review| %>
+          <ul class="stats-info">
+            <li>Review Title: <%= review.title %></li>
+            <li>Rating: <%= review.rating %></li>
+            <li>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </li>
+          </ul>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="stats-card" id="worst-three-reviews">
+      <% if @book.reviews.count > 0 %>
+        <h4>Worst Reviews:</h4>
+        <% @book.worst_three_reviews.each do |review| %>
+          <ul class="stats-info">
+            <li><%= review.title %></li>
+            <li>Rating: <%= review.rating %></li>
+            <li>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </li>
+          </ul>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+    <h3>Reviews</h3>
     <% @book.reviews.each do |review| %>
       <div class="review-card" id="all-reviews">
-        <li><%= review.title %></li>
+        <li>Review Title: <%= review.title %></li>
         <li>Reviewer: <%= link_to review.user.name, user_path(review.user.id) %></li>
         <li>Rating: <%= review.rating %></li>
         <li><%= review.body %></li>

@@ -89,9 +89,9 @@ RSpec.describe "as a visitor, " do
 
     it "I see an area on the page for statistics about reviews" do
       visit book_path(@book_1)
-      
+      expect(page).to have_content("Average Rating: #{@book_1.average_rating}")
+
       within "#book-show-page-stats" do
-        expect(page).to have_content("Average Rating: #{@book_1.average_rating}")
 
         within "#best-three-reviews" do
           expect(page).to have_content("Best Reviews:")
@@ -122,13 +122,7 @@ RSpec.describe "as a visitor, " do
           expect(page).to have_content("#{@review_4.rating}")
           expect(page).to have_content("#{@user_3.name}")
         end
-
-
       end
-      # - the top three reviews for this book (title, rating and user only)
-      # - the bottom three reviews for this book  (title, rating and user only)
-      # - the overall average rating of all reviews for this book
-
     end
   end
 end
