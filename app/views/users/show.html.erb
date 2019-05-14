@@ -15,9 +15,8 @@
         </div>
 
         <p>Review created: <%= review.created_at %></p>
-        <p><%= link_to "Delete Review", user_path(@user), method: :delete, data: {confirm: "Do you really want to delete this review?"} %></p>
+        <p><%= link_to "Delete Review", user_review_path(review), method: :delete, data: {confirm: "Do you really want to delete this review?"} %></p>
       </div>
-
 
     <% end %>
   </div>
