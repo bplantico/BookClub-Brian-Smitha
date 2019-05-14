@@ -32,7 +32,7 @@ class Book < ApplicationRecord
     self.joins(:reviews)
         .select("books.*, AVG(reviews.rating) AS avg_rating")
         .group(:id)
-        .order("avg_rating #{sort_order}")
+        .order("avg_rating #{sort_order}, books.title")
   end
 
   def self.sort_by_pages(sort_order)
@@ -44,5 +44,21 @@ class Book < ApplicationRecord
         .select("books.*, COUNT(reviews.id) AS reviews_count")
         .group(:id)
         .order("reviews_count #{sort_order}, books.title")
+  end
+
+  def self.top_three_books
+    self.joins(:reviews)
+        .group(:id)
+        .select("books.*, AVG(reviews.rating) AS avg_rating")
+        .order("avg_rating DESC, books.title")
+        .limit(3)
+  end
+
+  def self.bottom_three_books
+    self.joins(:reviews)
+        .group(:id)
+        .select("books.*, AVG(reviews.rating) AS avg_rating")
+        .order("avg_rating ASC, books.title")
+        .limit(3)
   end
 end
