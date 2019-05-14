@@ -138,6 +138,19 @@ RSpec.describe "as a visitor, " do
 
     end
 
+    it "there are links to sort reviews by newest first and oldest first" do
+      user_1 = User.create!(name: "User One")
+
+      review_1 = @book_1.reviews.create!(title: "Review of Book One", rating: 1, body: "stuff about book 1", user: user_1 )
+      review_2 = @book_2.reviews.create!(title: "Review of Book 2", rating: 2, body: "stuff about book 2", user: user_1 )
+      review_3 = @book_3.reviews.create!(title: "Review of Book 3", rating: 3, body: "stuff about book 3", user: user_1 )
+
+      visit user_path(user_1.id)
+
+      expect(page).to have_link("Sort Ascending")
+      expect(page).to have_link("Sort Descending")
+    end
+
   end
 
 end
