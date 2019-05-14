@@ -1,3 +1,11 @@
+<section id="add-new">
+  <%= link_to "Add A Review", new_book_review_path(@book) %>
+</section>
+
+<div class="delete">
+  <%= link_to "Delete Book", book_path(@book), method: :delete, data: {confirm: "Do you really want to deplete your library?"} %>
+</div>
+
 <h1><%= @book.title %></h1>
 
 <div id="book-show-page-stats">
@@ -26,34 +34,27 @@
       <% end %>
     <% end %>
   </div>
-
 </div>
 
-<% @book.authors.each do |author| %>
-  <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
-<% end %>
-<p>Pages: <%= @book.pages %></p>
-<p>Year Published: <%= @book.year_pub %></p>
-<img id="cover-image" src="<%= @book.cover_img %>"/>
-<h4>Reviews</h4>
+<main class="show-page">
+  <div class="book-card">
+    <% @book.authors.each do |author| %>
+    <p>Author(s): <%= link_to author.name, author_path(author.id) %></p>
+    <% end %>
+    <p>Pages: <%= @book.pages %></p>
+    <p>Year Published: <%= @book.year_pub %></p>
+  </div>
+  <div class="show-page-image">
+    <img class="large-image" src="<%= @book.cover_img %>"/>
+  </div>
 
-<<div class="all-reviews">
-  <p><% @book.reviews.each do |review| %></p>
-  <ul>
-    <li><%= review.title %></li>
-
-    <li>Reviewer: <%= link_to review.user.name, user_path(review.user.id) %></li>
-
-    <li>Rating: <%= review.rating %></li>
-    <li><%= review.body %></li>
-  </ul>
-  <% end %>
-</div>
-
-<section id="add-new-review">
-  <p><%= link_to "Add A Review", new_book_review_path(@book) %></p>
-</section>
-
-<div class="delete-book">
-  <%= link_to "Delete Book", book_path(@book), method: :delete, data: {confirm: "Do you really want to deplete your library?"} %>
-</div>
+  <h4>Reviews</h4>
+    <% @book.reviews.each do |review| %>
+      <div class="review-card">
+        <li><%= review.title %></li>
+        <li>Reviewer: <%= link_to review.user.name, user_path(review.user.id) %></li>
+        <li>Rating: <%= review.rating %></li>
+        <li><%= review.body %></li>
+      </div>
+    <% end %>
+</main>
