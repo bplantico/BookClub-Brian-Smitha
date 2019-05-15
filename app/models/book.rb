@@ -9,6 +9,11 @@ class Book < ApplicationRecord
 
   validates :title, uniqueness: true
 
+
+  def array_of_reviewer_ids
+    reviews.select("reviews.user_id").pluck("reviews.user_id")
+  end
+
   def average_rating
     if reviews.count > 0
       reviews.average(:rating).to_f.round(2)

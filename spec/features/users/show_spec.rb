@@ -151,7 +151,7 @@ RSpec.describe "as a visitor, " do
 
     end
 
-    it "reviews are sorted desc when newest first link clicked" do
+    it "reviews are sorted when newest first link clicked" do
       user_1 = User.create!(name: "User One")
 
       review_1 = @book_1.reviews.create!(title: "First", rating: 1, body: "stuff about book 1", user: user_1)
@@ -161,6 +161,18 @@ RSpec.describe "as a visitor, " do
       click_link("Sort Reviews (newest first)")
 
       expect("Second").to appear_after("First")
+    end
+
+    it "reviews are sorted when oldest first link clicked" do
+      user_1 = User.create!(name: "User One")
+
+      review_1 = @book_1.reviews.create!(title: "First", rating: 1, body: "stuff about book 1", user: user_1)
+      review_2 = @book_2.reviews.create!(title: "Second", rating: 2, body: "stuff about book 2", user: user_1, created_at: "2019-05-12 02:53:27.326667")
+
+      visit user_path(user_1.id)
+      click_link("Sort Reviews (oldest first)")
+
+      expect("First").to appear_after("Second")
     end
 
   end

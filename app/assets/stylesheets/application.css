@@ -100,7 +100,7 @@ h1 {
   text-align: left;
 }
 
-h4 {
+h4, h3 {
   text-align: center;
   padding: 10px;
 }
@@ -125,7 +125,7 @@ h4 {
   padding: 20px;
 }
 
-#sort-links{
+#sort-links, #sort-user-links{
   box-shadow: -6px 8px 6px -6px black;
   padding: 25px;
   background-color: #DEDBDB;
@@ -133,6 +133,16 @@ h4 {
   margin: 20px;
   width: 400px;
   list-style-type: none;
+}
+
+#sort-user-links {
+  align-content: center;
+  margin: 50px auto;
+}
+
+#sort-user-links li {
+  margin: 10px auto;
+  text-align: center;
 }
 
 .forms{

@@ -2,9 +2,9 @@
 
 <h1>Reviews by <%= @user.name %></h1>
 
-<div class="sort-reviews">
-  <%= link_to "Sort Reviews (newest first)", user_path(@user, sort: 'newest') %>
-  <%= link_to "Sort Reviews (oldest first)", user_path(@user, sort: 'oldest') %>
+<div id="sort-user-links">
+  <li><%= link_to "Sort Reviews (newest first)", user_path(@user, sort: 'newest') %></li>
+  <li><%= link_to "Sort Reviews (oldest first)", user_path(@user, sort: 'oldest') %></li>
 </div>
 
 <main class="show-page">

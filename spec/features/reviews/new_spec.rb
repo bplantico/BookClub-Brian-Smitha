@@ -23,7 +23,7 @@ RSpec.describe "As a visitor, " do
       expect(current_path).to eq(new_book_review_path(book_1))
 
       fill_in :review_title, with: "reView oNe  "
-      fill_in :review_user, with: "Brian Plantico"
+      fill_in :review_user, with: "brian plantico"
       fill_in :review_rating, with: 5
       fill_in :review_body, with: "This is by far the absolute best Book I have ever read."
 

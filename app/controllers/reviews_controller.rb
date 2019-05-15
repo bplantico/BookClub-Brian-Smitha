@@ -14,8 +14,8 @@ class ReviewsController < ApplicationController
     review.title = title
 
     # find the user object
-    user = user_params[:user].strip.downcase.titleize
-    user = User.find_or_create_by(name: user_params[:user])
+    user_titleized = user_params[:user].strip.downcase.titleize
+    user = User.find_or_create_by(name: user_titleized)
     review.user = user
 
     # find the book
@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
     review.book_id = book.id
 
     # reject if user.id already in book.reviews
-    if Review.array_of_reviewer_ids.include?(user.id)
+    if book.array_of_reviewer_ids.include?(user.id)
       redirect_to new_book_review_path
     else
       review.save
