@@ -146,8 +146,8 @@ RSpec.describe "as a visitor, " do
 
       visit user_path(user_1.id)
 
-      expect(page).to have_link("Sort Reviews (newest first")
-      expect(page).to have_link("Sort Reviews (oldest first")
+      expect(page).to have_link("Sort Reviews (newest first)")
+      expect(page).to have_link("Sort Reviews (oldest first)")
 
     end
 
@@ -158,7 +158,7 @@ RSpec.describe "as a visitor, " do
       review_2 = @book_2.reviews.create!(title: "Second", rating: 2, body: "stuff about book 2", user: user_1, created_at: "2019-05-12 02:53:27.326667")
 
       visit user_path(user_1.id)
-      click_link("Sort Reviews (newest first")
+      click_link("Sort Reviews (newest first)")
 
       expect("Second").to appear_after("First")
     end
