@@ -2,8 +2,13 @@
 
 <h1>Reviews by <%= @user.name %></h1>
 
+<div id="sort-user-links">
+  <li><%= link_to "Sort Reviews (newest first)", user_path(@user, sort: 'newest') %></li>
+  <li><%= link_to "Sort Reviews (oldest first)", user_path(@user, sort: 'oldest') %></li>
+</div>
+
 <main class="show-page">
-  <% @user.reviews.each do |review| %>
+  <% @reviews.each do |review| %>
     <div class="review-card" id="test-review-index-<%= review.id %>">
       <p>Review Title: <%= review.title %></p>
       <p>Rating: <%= review.rating %></p>

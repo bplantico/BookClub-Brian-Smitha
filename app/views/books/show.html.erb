@@ -29,7 +29,7 @@
           <ul class="stats-info">
             <li>Review Title: <%= review.title %></li>
             <li>Rating: <%= review.rating %></li>
-            <li>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </li>
+            <li>Reviewer: <%= link_to review.reviewer_name, user_path(review[:user_id]) %> </li>
           </ul>
         <% end %>
       <% end %>
@@ -42,7 +42,7 @@
           <ul class="stats-info">
             <li>Review Title: <%= review.title %></li>
             <li>Rating: <%= review.rating %></li>
-            <li>Reviewer: <%= link_to review.reviewer_name(review[:user_id]), user_path(review[:user_id]) %> </li>
+            <li>Reviewer: <%= link_to review.reviewer_name, user_path(review[:user_id]) %> </li>
           </ul>
         <% end %>
       <% end %>
